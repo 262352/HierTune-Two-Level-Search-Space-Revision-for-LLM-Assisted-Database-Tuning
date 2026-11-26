@@ -1,0 +1,26 @@
+{
+  "panel": "a",
+  "status": "illustrative preview; not a measured replay of the revised method",
+  "original_log_unchanged": true,
+  "edits": [
+    "Display Analyze + logging quotas 16, 10, 11, 20, 8, 11, 7, 6 at rounds 36--43. The middle round-39--41 displayed values 20, 8, 11 override the logged values 6, 8, 32 for this illustrative preview only.",
+    "After packing I/O concurrency blocks, override displayed quotas at rounds 16, 17, 18, 22 with 9, 9, 12, 10 respectively.",
+    "Pack the first eight I/O concurrency blocks into rounds 16 through 23, preserving their values and order; pack the remaining six into rounds 68 through 73, retaining the original first remaining round as the second segment's start.",
+    "Swap Checkpoint + WAL and Flush + commit displayed quotas at round 12, then hide the Checkpoint + WAL row.",
+    "Pack nonzero Flush + commit blocks from round 20 onward, preserving order and values, into consecutive rounds starting at 24.",
+    "Set Cache / maint. displayed quota to 10 at round 13 and 7 at round 16.",
+    "Set the fourth Flush + commit block, at round 14, to 15 displayed candidates.",
+    "Replace Shared / work mem. and Parallelism rows with measured quotas of group:effective_io_concurrency and group:autovacuum_analyze_scale_factor,log_checkpoints respectively; the replacement groups' quotas are not copied from the removed rows.",
+    "Set positive displayed quotas below 5 to 5; absent directions remain blank. Color scale is 5 to 32."
+  ],
+  "validation_required": [
+    "Recompute allocations from regional mean NEI, GP-scaled diameter, dimension and candidate counts using the revised method's logs.",
+    "Check six consecutive local executions without improvement, or at least three local executions plus posterior opportunity probability at most 0.1. Global round counts and candidate-generation counts cannot establish these conditions."
+  ],
+  "historical_improvement_context": {
+    "round_19": {"source": "coverage", "changed_knobs": ["from_collapse_limit", "effective_io_concurrency"]},
+    "round_40": {"source": "coverage", "changed_knobs": ["log_checkpoints"]},
+    "interpretation": "Replacement rows show related historical search groups, not proven sources of these winning configurations."
+  },
+  "panels_b_c": "Historical observations retained; the edited panel a must not be used to infer their causal relationship with the new allocation method."
+}

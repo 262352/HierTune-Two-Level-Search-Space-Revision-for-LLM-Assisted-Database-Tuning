@@ -1,0 +1,42 @@
+{
+  "group:join_collapse_limit,max_parallel_workers": {
+    "accepted": 75000,
+    "attempts": 75630,
+    "bounded_rejections": 0,
+    "canonical_checks": 100,
+    "duplicate_rejections": 330,
+    "historical_rejections": 300,
+    "outside_group_accepted": 0,
+    "repair_attempts": 0
+  },
+  "group:maintenance_work_mem": {
+    "accepted": 75000,
+    "attempts": 75000,
+    "bounded_rejections": 0,
+    "canonical_checks": 100,
+    "duplicate_rejections": 0,
+    "historical_rejections": 0,
+    "outside_group_accepted": 0,
+    "repair_attempts": 0
+  },
+  "group:max_parallel_workers,max_parallel_workers_per_gather": {
+    "accepted": 75000,
+    "attempts": 75847,
+    "bounded_rejections": 0,
+    "canonical_checks": 100,
+    "duplicate_rejections": 413,
+    "historical_rejections": 434,
+    "outside_group_accepted": 0,
+    "repair_attempts": 0
+  },
+  "group:shared_buffers": {
+    "accepted": 75000,
+    "attempts": 75000,
+    "bounded_rejections": 0,
+    "canonical_checks": 100,
+    "duplicate_rejections": 0,
+    "historical_rejections": 0,
+    "outside_group_accepted": 0,
+    "repair_attempts": 0
+  }
+}

@@ -1,0 +1,2412 @@
+{
+  "age": {
+    "autovacuum_analyze_scale_factor": 18,
+    "autovacuum_freeze_max_age": 90,
+    "autovacuum_max_workers": 90,
+    "autovacuum_naptime": 90,
+    "autovacuum_vacuum_cost_delay": 36,
+    "autovacuum_vacuum_cost_limit": 90,
+    "autovacuum_vacuum_scale_factor": 90,
+    "backend_flush_after": 72,
+    "bgwriter_delay": 18,
+    "bgwriter_flush_after": 90,
+    "bgwriter_lru_maxpages": 90,
+    "bgwriter_lru_multiplier": 90,
+    "checkpoint_completion_target": 90,
+    "checkpoint_flush_after": 24,
+    "checkpoint_timeout": 0,
+    "checkpoint_warning": 6,
+    "commit_delay": 0,
+    "commit_siblings": 90,
+    "deadlock_timeout": 90,
+    "default_statistics_target": 48,
+    "effective_cache_size": 42,
+    "effective_io_concurrency": 0,
+    "from_collapse_limit": 54,
+    "hot_standby_feedback": 54,
+    "huge_pages": 42,
+    "jit": 30,
+    "join_collapse_limit": 0,
+    "log_checkpoints": 6,
+    "log_connections": 90,
+    "log_disconnections": 90,
+    "log_min_duration_statement": 0,
+    "log_rotation_size": 90,
+    "log_temp_files": 90,
+    "logging_collector": 0,
+    "maintenance_work_mem": 0,
+    "max_connections": 48,
+    "max_locks_per_transaction": 0,
+    "max_parallel_maintenance_workers": 90,
+    "max_parallel_workers": 0,
+    "max_parallel_workers_per_gather": 0,
+    "max_pred_locks_per_transaction": 90,
+    "max_replication_slots": 90,
+    "max_standby_streaming_delay": 0,
+    "max_wal_senders": 24,
+    "max_wal_size": 0,
+    "max_worker_processes": 90,
+    "min_wal_size": 90,
+    "random_page_cost": 30,
+    "seq_page_cost": 36,
+    "shared_buffers": 0,
+    "temp_buffers": 90,
+    "track_activity_query_size": 0,
+    "vacuum_cost_delay": 90,
+    "vacuum_cost_limit": 90,
+    "wal_buffers": 78,
+    "wal_compression": 0,
+    "wal_sync_method": 0,
+    "wal_writer_delay": 78,
+    "wal_writer_flush_after": 0,
+    "work_mem": 0
+  },
+  "completed": 100,
+  "extra_state": {
+    "active": [
+      "checkpoint_timeout",
+      "commit_delay",
+      "effective_io_concurrency",
+      "join_collapse_limit",
+      "log_min_duration_statement",
+      "logging_collector",
+      "maintenance_work_mem",
+      "max_locks_per_transaction",
+      "max_parallel_workers",
+      "max_parallel_workers_per_gather",
+      "max_standby_streaming_delay",
+      "max_wal_size",
+      "shared_buffers",
+      "track_activity_query_size",
+      "wal_compression",
+      "wal_sync_method",
+      "wal_writer_flush_after",
+      "work_mem"
+    ],
+    "anchor": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": false,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers": 23,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "bootstrap": {
+      "concurrency_execution_expert": {
+        "joint_hypotheses": [
+          {
+            "mechanism": "Group commit: with 16 terminals, a commit_delay paired with low commit_siblings batches WAL fsyncs, reducing per-commit I/O latency and raising throughput; anchor trial 8 supports this combination.",
+            "patch": {
+              "commit_delay": 8438,
+              "commit_siblings": 4
+            }
+          },
+          {
+            "mechanism": "Moderate work_mem with low per-gather parallelism avoids memory pressure and worker contention while keeping sort/hash operations in memory for YCSB point/range reads.",
+            "patch": {
+              "max_parallel_workers_per_gather": 3,
+              "work_mem": 7854
+            }
+          }
+        ],
+        "patches": [
+          {
+            "commit_delay": 5000,
+            "commit_siblings": 5,
+            "max_parallel_workers_per_gather": 2,
+            "work_mem": 4096
+          },
+          {
+            "backend_flush_after": 128,
+            "max_parallel_workers": 16,
+            "max_parallel_workers_per_gather": 4,
+            "work_mem": 16384
+          }
+        ],
+        "regions": {
+          "backend_flush_after": {
+            "action": "refine",
+            "center": 76,
+            "halfwidth": 0.3,
+            "reason": "Anchor trial 8 used 76 (8kB units) with best result; trial 0 default 0 scored worst. Moderate flush-after appears beneficial; refine around anchor."
+          },
+          "commit_delay": {
+            "action": "refine",
+            "center": 8438,
+            "halfwidth": 0.3,
+            "reason": "Anchor trial 8 used 8438us with best throughput; trial 0 default 0 was worst. Group commit delay likely helps under 16 concurrent terminals; refine near anchor."
+          },
+          "commit_siblings": {
+            "action": "refine",
+            "center": 4,
+            "halfwidth": 0.3,
+            "reason": "Anchor trial 8 used commit_siblings=4 with commit_delay=8438; low sibling threshold enables group commit. Refine to confirm interaction with commit_delay."
+          },
+          "max_parallel_workers": {
+            "action": "refine",
+            "center": 23,
+            "halfwidth": 0.25,
+            "reason": "Anchor trial 8 used 23 with best throughput; trial 6 used 29 at lower TPS. Keep near anchor to test sensitivity of total parallel worker pool."
+          },
+          "max_parallel_workers_per_gather": {
+            "action": "refine",
+            "center": 3,
+            "halfwidth": 0.25,
+            "reason": "Anchor trial 8 (best) used 3; trial 6 (2204 TPS) used 15 and trial 5 used 16 with lower throughput. Refine near 3 to confirm low parallelism is optimal for this OLTP-style workload."
+          },
+          "work_mem": {
+            "action": "expand",
+            "center": 7854,
+            "halfwidth": 0.35,
+            "reason": "YCSB with 16 terminals; anchor trial 8 (best, 2412 TPS) used work_mem=7854kB. Trials with very large work_mem (445431, 839553, 576479) scored poorly, suggesting moderate work_mem is favorable; expand around anchor to probe lower/moderate range."
+          }
+        }
+      },
+      "memory_expert": {
+        "joint_hypotheses": [
+          {
+            "mechanism": "Larger shared_buffers paired with proportionally larger effective_cache_size may reduce buffer misses for YCSB read-heavy access while keeping planner estimates consistent; anchor already best, so test modest upward step.",
+            "patch": {
+              "effective_cache_size": 900000,
+              "shared_buffers": 1200000
+            }
+          },
+          {
+            "mechanism": "YCSB point queries rarely spill, but keeping work_mem and temp_buffers near anchor avoids per-session memory pressure that could reduce effective shared_buffers caching under 16 terminals.",
+            "patch": {
+              "temp_buffers": 30000,
+              "work_mem": 8000
+            }
+          }
+        ],
+        "patches": [
+          {
+            "effective_cache_size": 900000,
+            "maintenance_work_mem": 1500000,
+            "shared_buffers": 1200000,
+            "work_mem": 8000
+          },
+          {
+            "effective_cache_size": 500000,
+            "maintenance_work_mem": 900000,
+            "shared_buffers": 600000,
+            "work_mem": 6000
+          },
+          {
+            "max_connections": 300,
+            "max_worker_processes": 40,
+            "temp_buffers": 30000,
+            "wal_buffers": 1600
+          }
+        ],
+        "regions": {
+          "effective_cache_size": {
+            "action": "refine",
+            "center": 589691,
+            "halfwidth": 0.3,
+            "reason": "Anchor value 589691 (8kB) is the best measured config. Trial 1 (7.5M) and trial 3 (10.7M) also scored positively, but trial 6 (10M) with small shared_buffers did poorly, suggesting cache_size must be paired with adequate shared_buffers. Refine near anchor."
+          },
+          "huge_pages": {
+            "action": "hold",
+            "reason": "Anchor uses 'try' and is best measured; 'off' configs (trials 1,4,9) were mixed but not clearly better. Hold anchor choice.",
+            "values": [
+              "try"
+            ]
+          },
+          "maintenance_work_mem": {
+            "action": "refine",
+            "center": 1156407,
+            "halfwidth": 0.3,
+            "reason": "Anchor 1156407 kB is best measured; trial 6 (1.0M) also scored well while trial 2 (22MB) and trial 4 (353MB) underperformed. Refine around anchor in log space."
+          },
+          "max_connections": {
+            "action": "refine",
+            "center": 276,
+            "halfwidth": 0.2,
+            "reason": "Anchor 276 is best measured. Trial 6 (349) and trial 1 (301) also scored positively; trial 5 (35) and trial 2 (55) underperformed. Refine near anchor; 16 terminals need headroom but not extremes."
+          },
+          "max_worker_processes": {
+            "action": "refine",
+            "center": 45,
+            "halfwidth": 0.2,
+            "reason": "Anchor 45 is best measured. Trial 6 (29) and trial 1 (46) scored well; trial 2 (7) and trial 3 (45 but other factors) mixed. Refine near anchor."
+          },
+          "shared_buffers": {
+            "action": "refine",
+            "center": 801614,
+            "halfwidth": 0.3,
+            "reason": "Anchor trial 8 (shared_buffers=801614, 8kB) achieved the best measured throughput (2412.9, utility 0.235). Other trials with shared_buffers in the ~0.6M-2.8M range (trials 1,3,5) also scored well, while small values (trials 2,4,6) underperformed. Refine around the anchor in log space."
+          },
+          "temp_buffers": {
+            "action": "refine",
+            "center": 34300,
+            "halfwidth": 0.3,
+            "reason": "Anchor temp_buffers=34300 kB is best measured. Small values (trials 2,4,6,9) underperformed; large values (trial 3 at 94612) also did not help. Refine near anchor in log space."
+          },
+          "wal_buffers": {
+            "action": "refine",
+            "center": 1441,
+            "halfwidth": 0.2,
+            "reason": "Anchor wal_buffers=1441 (8kB) is best measured. Trial 1 (1304) and trial 3 (1944) also scored positively; trial 4 (134) underperformed. Refine near anchor."
+          },
+          "work_mem": {
+            "action": "refine",
+            "center": 7854,
+            "halfwidth": 0.3,
+            "reason": "Anchor work_mem=7854 kB is best measured. Very large work_mem (trials 2,3,7 at 445MB/839MB/576MB) did not help YCSB point workloads and coincided with lower throughput. Keep near anchor in log space."
+          }
+        }
+      },
+      "optimizer_workload_expert": {
+        "joint_hypotheses": [
+          {
+            "mechanism": "Cost model plus IO concurrency jointly determine index vs sequential scan choice for YCSB point/range reads; tuning them together may improve plan selection.",
+            "patch": {
+              "effective_io_concurrency": 129,
+              "random_page_cost": 4.98,
+              "seq_page_cost": 1.14
+            }
+          }
+        ],
+        "patches": [
+          {
+            "default_statistics_target": 265,
+            "effective_io_concurrency": 129,
+            "random_page_cost": 4.98,
+            "seq_page_cost": 1.14
+          },
+          {
+            "jit": false,
+            "join_collapse_limit": 10,
+            "max_parallel_workers": 23,
+            "max_parallel_workers_per_gather": 3
+          }
+        ],
+        "regions": {
+          "default_statistics_target": {
+            "action": "refine",
+            "center": 265,
+            "halfwidth": 0.3,
+            "reason": "Anchor trial 8 (best, 2412 TPS) used 265; trials with very low targets (12-62) underperformed, suggesting higher stats target helps planner quality for YCSB."
+          },
+          "effective_io_concurrency": {
+            "action": "refine",
+            "center": 129,
+            "halfwidth": 0.3,
+            "reason": "Anchor used 129; high values (172-250) appear in several strong trials (6,8), low values in weak ones; refine around anchor."
+          },
+          "from_collapse_limit": {
+            "action": "hold",
+            "center": 32,
+            "halfwidth": 0.2,
+            "reason": "Anchor at upper bound 32; YCSB queries are simple so this is likely inert, hold near max."
+          },
+          "jit": {
+            "action": "hold",
+            "reason": "Anchor (best trial) had jit=false; YCSB short queries gain nothing from JIT compilation overhead.",
+            "values": [
+              false
+            ]
+          },
+          "join_collapse_limit": {
+            "action": "refine",
+            "center": 10,
+            "halfwidth": 0.3,
+            "reason": "Anchor used 10; YCSB point queries rarely join, but keep near anchor to test planner sensitivity."
+          },
+          "max_parallel_workers": {
+            "action": "refine",
+            "center": 23,
+            "halfwidth": 0.3,
+            "reason": "Anchor used 23; parallel workers may help scans but YCSB is point-lookup heavy, refine moderately."
+          },
+          "max_parallel_workers_per_gather": {
+            "action": "refine",
+            "center": 3,
+            "halfwidth": 0.3,
+            "reason": "Anchor used 3; keep modest since YCSB queries are short and parallelism overhead may hurt."
+          },
+          "random_page_cost": {
+            "action": "refine",
+            "center": 4.98,
+            "halfwidth": 0.3,
+            "reason": "Anchor used ~4.98; strong trials span 3.9-5.5, refine around anchor to tune index vs seq choice."
+          },
+          "seq_page_cost": {
+            "action": "refine",
+            "center": 1.14,
+            "halfwidth": 0.3,
+            "reason": "Anchor used 1.14; near default, refine to balance with random_page_cost."
+          },
+          "track_activity_query_size": {
+            "action": "refine",
+            "center": 40951,
+            "halfwidth": 0.3,
+            "reason": "Anchor used ~40KB; restart-required but low risk, refine to test monitoring overhead impact."
+          }
+        }
+      },
+      "storage_wal_expert": {
+        "joint_hypotheses": [],
+        "patches": [
+          {
+            "checkpoint_timeout": 600,
+            "max_wal_size": 20000,
+            "wal_buffers": 2048,
+            "wal_writer_flush_after": 2048
+          },
+          {
+            "bgwriter_flush_after": 256,
+            "bgwriter_lru_multiplier": 9.0,
+            "checkpoint_flush_after": 128,
+            "wal_writer_delay": 500
+          }
+        ],
+        "regions": {
+          "bgwriter_lru_multiplier": {
+            "action": "refine",
+            "center": 7.53,
+            "halfwidth": 0.2,
+            "reason": "Anchor 7.53 high multiplier keeps dirty buffers low; refine near upper range to sustain write throughput."
+          },
+          "checkpoint_timeout": {
+            "action": "shift",
+            "center": 321,
+            "halfwidth": 0.3,
+            "reason": "Anchor 321s is low; longer checkpoint intervals reduce checkpoint I/O interference. Shift upward toward mid-domain."
+          },
+          "max_wal_size": {
+            "action": "refine",
+            "center": 14627,
+            "halfwidth": 0.3,
+            "reason": "Anchor 14627MB large WAL reduces checkpoint frequency; refine to balance WAL disk usage vs checkpoint stalls."
+          },
+          "wal_buffers": {
+            "action": "refine",
+            "center": 1441,
+            "halfwidth": 0.3,
+            "reason": "Anchor trial 8 (best, 2412 TPS) used 1441; WAL-heavy YCSB update workload benefits from larger WAL buffers, refine around anchor."
+          },
+          "wal_writer_delay": {
+            "action": "refine",
+            "center": 882,
+            "halfwidth": 0.3,
+            "reason": "Anchor at 882ms with high throughput; longer WAL writer delay reduces flush frequency. Refine to confirm optimum."
+          },
+          "wal_writer_flush_after": {
+            "action": "refine",
+            "center": 1682,
+            "halfwidth": 0.25,
+            "reason": "Anchor 1682 (8kB units) is near upper domain; large flush-after batches reduce fsync overhead in write-heavy YCSB."
+          }
+        }
+      }
+    },
+    "challengers": {
+      "autovacuum_analyze_scale_factor": 0,
+      "autovacuum_freeze_max_age": 0,
+      "autovacuum_max_workers": 0,
+      "autovacuum_naptime": 0,
+      "autovacuum_vacuum_cost_delay": 0,
+      "autovacuum_vacuum_cost_limit": 0,
+      "autovacuum_vacuum_scale_factor": 0,
+      "backend_flush_after": 0,
+      "bgwriter_delay": 0,
+      "bgwriter_flush_after": 0,
+      "bgwriter_lru_maxpages": 0,
+      "bgwriter_lru_multiplier": 0,
+      "checkpoint_completion_target": 1,
+      "checkpoint_flush_after": 0,
+      "checkpoint_warning": 0,
+      "commit_delay": 2,
+      "commit_siblings": 0,
+      "deadlock_timeout": 0,
+      "default_statistics_target": 0,
+      "effective_cache_size": 0,
+      "effective_io_concurrency": 0,
+      "from_collapse_limit": 0,
+      "hot_standby_feedback": 0,
+      "huge_pages": 0,
+      "jit": 0,
+      "join_collapse_limit": 1,
+      "log_checkpoints": 0,
+      "log_connections": 0,
+      "log_disconnections": 0,
+      "log_min_duration_statement": 2,
+      "log_rotation_size": 0,
+      "log_temp_files": 0,
+      "logging_collector": 1,
+      "max_connections": 0,
+      "max_locks_per_transaction": 1,
+      "max_parallel_maintenance_workers": 0,
+      "max_pred_locks_per_transaction": 0,
+      "max_replication_slots": 0,
+      "max_standby_streaming_delay": 1,
+      "max_wal_senders": 0,
+      "max_worker_processes": 0,
+      "min_wal_size": 0,
+      "random_page_cost": 0,
+      "seq_page_cost": 0,
+      "temp_buffers": 0,
+      "track_activity_query_size": 0,
+      "vacuum_cost_delay": 0,
+      "vacuum_cost_limit": 0,
+      "wal_buffers": 0,
+      "wal_buffers,wal_writer_delay": 0,
+      "wal_compression": 0,
+      "wal_sync_method": 0,
+      "wal_writer_delay": 0
+    },
+    "hypotheses": {
+      "group:commit_delay,max_locks_per_transaction": {
+        "experts": [
+          "concurrency_execution_expert"
+        ],
+        "kind": "local",
+        "knobs": [
+          "commit_delay",
+          "max_locks_per_transaction"
+        ],
+        "patches": []
+      },
+      "group:commit_delay,max_parallel_workers": {
+        "experts": [
+          "concurrency_execution_expert",
+          "optimizer_workload_expert"
+        ],
+        "kind": "joint",
+        "knobs": [
+          "commit_delay",
+          "max_parallel_workers"
+        ],
+        "patches": []
+      },
+      "group:effective_io_concurrency,join_collapse_limit": {
+        "experts": [
+          "optimizer_workload_expert",
+          "storage_wal_expert"
+        ],
+        "kind": "joint",
+        "knobs": [
+          "effective_io_concurrency",
+          "join_collapse_limit"
+        ],
+        "patches": []
+      },
+      "group:effective_io_concurrency,max_parallel_workers_per_gather": {
+        "experts": [
+          "concurrency_execution_expert",
+          "optimizer_workload_expert",
+          "storage_wal_expert"
+        ],
+        "kind": "joint",
+        "knobs": [
+          "effective_io_concurrency",
+          "max_parallel_workers_per_gather"
+        ],
+        "patches": []
+      },
+      "group:join_collapse_limit,track_activity_query_size": {
+        "experts": [
+          "optimizer_workload_expert"
+        ],
+        "kind": "local",
+        "knobs": [
+          "join_collapse_limit",
+          "track_activity_query_size"
+        ],
+        "patches": []
+      },
+      "group:maintenance_work_mem,work_mem": {
+        "experts": [
+          "concurrency_execution_expert",
+          "memory_expert",
+          "storage_wal_expert"
+        ],
+        "kind": "joint",
+        "knobs": [
+          "maintenance_work_mem",
+          "work_mem"
+        ],
+        "patches": []
+      },
+      "group:max_parallel_workers,max_parallel_workers_per_gather": {
+        "experts": [
+          "concurrency_execution_expert",
+          "optimizer_workload_expert"
+        ],
+        "kind": "joint",
+        "knobs": [
+          "max_parallel_workers",
+          "max_parallel_workers_per_gather"
+        ],
+        "patches": []
+      },
+      "group:shared_buffers,work_mem": {
+        "experts": [
+          "memory_expert"
+        ],
+        "kind": "local",
+        "knobs": [
+          "shared_buffers",
+          "work_mem"
+        ],
+        "patches": []
+      },
+      "group:wal_compression,wal_writer_flush_after": {
+        "experts": [
+          "storage_wal_expert"
+        ],
+        "kind": "local",
+        "knobs": [
+          "wal_compression",
+          "wal_writer_flush_after"
+        ],
+        "patches": []
+      }
+    },
+    "hypothesis_credit": {
+      "group:autovacuum_analyze_scale_factor": 7.605903601369394e-06,
+      "group:autovacuum_analyze_scale_factor,log_checkpoints": 3.7414441915671235e-08,
+      "group:autovacuum_analyze_scale_factor,wal_writer_flush_after": 4.113761393303032e-09,
+      "group:autovacuum_vacuum_cost_delay": 1.2676506002282319e-06,
+      "group:autovacuum_vacuum_cost_delay,log_checkpoints": 1.2169445762191031e-05,
+      "group:backend_flush_after,commit_delay": 6.1706420899545494e-09,
+      "group:backend_flush_after,commit_delay,max_connections": 1.0352619520185895e-09,
+      "group:backend_flush_after,commit_delay,max_connections,work_mem": 2.9642774844753097e-10,
+      "group:bgwriter_delay,log_checkpoints": 0.00014411518807585605,
+      "group:checkpoint_flush_after,checkpoint_timeout,max_wal_size": 0.0007526271582073508,
+      "group:checkpoint_flush_after,max_wal_senders": 9.408344298568909e-05,
+      "group:checkpoint_timeout": 3.9844884062513215e-08,
+      "group:checkpoint_timeout,max_wal_size": 0.040370176000000015,
+      "group:checkpoint_timeout,max_wal_size,wal_buffers": 0.0,
+      "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay": 4.3135914667441215e-10,
+      "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_flush_after": 4.22731963740924e-09,
+      "group:checkpoint_timeout,max_wal_size,wal_writer_flush_after": 0.026214400000000013,
+      "group:checkpoint_warning,log_checkpoints": 0.0021474836480000013,
+      "group:commit_delay": 0.0025000000000000005,
+      "group:commit_delay,max_locks_per_transaction": 0.04296875,
+      "group:commit_delay,max_parallel_workers": 0.078125,
+      "group:commit_delay,max_parallel_workers,max_parallel_workers_per_gather": 0.125,
+      "group:commit_delay,work_mem": 0.014080000000000004,
+      "group:default_statistics_target": 5.138091693741468e-07,
+      "group:default_statistics_target,effective_io_concurrency": 3.891803075939756e-08,
+      "group:default_statistics_target,effective_io_concurrency,from_collapse_limit,join_collapse_limit": 1.2052035331942477e-08,
+      "group:default_statistics_target,effective_io_concurrency,join_collapse_limit,max_parallel_workers_per_gather": 3.149544827255015e-10,
+      "group:default_statistics_target,from_collapse_limit": 3.5076039295941785e-07,
+      "group:default_statistics_target,from_collapse_limit,max_parallel_workers,max_parallel_workers_per_gather": 4.793725370445374e-07,
+      "group:default_statistics_target,join_collapse_limit": 1.1847270886719424e-06,
+      "group:default_statistics_target,max_parallel_workers_per_gather": 1.645504557321213e-09,
+      "group:effective_cache_size": 4.5193751856687244e-06,
+      "group:effective_cache_size,huge_pages": 1.6333553612205092e-06,
+      "group:effective_cache_size,maintenance_work_mem": 1.0629351941706812e-09,
+      "group:effective_cache_size,maintenance_work_mem,shared_buffers,work_mem": 9.636902969440656e-06,
+      "group:effective_cache_size,maintenance_work_mem,work_mem": 1.0084361297583262e-06,
+      "group:effective_cache_size,max_connections": 2.65027059716759e-10,
+      "group:effective_cache_size,work_mem": 7.3107539768170584e-06,
+      "group:effective_io_concurrency": 0.0,
+      "group:effective_io_concurrency,from_collapse_limit": 1.6961731821872575e-09,
+      "group:effective_io_concurrency,jit": 5.192296858534839e-07,
+      "group:effective_io_concurrency,join_collapse_limit": 0.0078125,
+      "group:effective_io_concurrency,join_collapse_limit,max_parallel_workers,max_parallel_workers_per_gather": 0.05888000000000002,
+      "group:effective_io_concurrency,join_collapse_limit,max_parallel_workers_per_gather": 1.0141204801825855e-05,
+      "group:effective_io_concurrency,join_collapse_limit,random_page_cost,seq_page_cost": 1.3792038530483165e-05,
+      "group:effective_io_concurrency,join_collapse_limit,track_activity_query_size": 0.000599519182395561,
+      "group:effective_io_concurrency,log_checkpoints": 2.658455991569838e-07,
+      "group:effective_io_concurrency,maintenance_work_mem": 0.0008192000000000004,
+      "group:effective_io_concurrency,maintenance_work_mem,wal_writer_flush_after": 4.979059837204625e-10,
+      "group:effective_io_concurrency,max_parallel_workers_per_gather": 0.0625,
+      "group:effective_io_concurrency,max_wal_senders": 0.00017708874310761203,
+      "group:effective_io_concurrency,random_page_cost": 2.4178516392292623e-05,
+      "group:effective_io_concurrency,track_activity_query_size": 0.00035184372088832035,
+      "group:effective_io_concurrency,wal_writer_delay,wal_writer_flush_after": 2.501109127526041e-10,
+      "group:from_collapse_limit": 5.4806311399909034e-08,
+      "group:from_collapse_limit,join_collapse_limit": 7.532522082464048e-09,
+      "group:hot_standby_feedback,max_connections": 2.630702947195632e-07,
+      "group:hot_standby_feedback,max_parallel_workers": 2.0552366774965875e-07,
+      "group:huge_pages,shared_buffers": 6.16761790044202e-06,
+      "group:jit,random_page_cost": 1.547425049106728e-05,
+      "group:join_collapse_limit": 0.0,
+      "group:join_collapse_limit,max_parallel_workers": 1.7254365866976486e-09,
+      "group:join_collapse_limit,max_parallel_workers,max_parallel_workers_per_gather": 1.501820005061633e-09,
+      "group:join_collapse_limit,max_parallel_workers_per_gather": 1.0783978666860304e-10,
+      "group:join_collapse_limit,seq_page_cost": 1.8293580045669705e-06,
+      "group:join_collapse_limit,track_activity_query_size": 0.17578125,
+      "group:log_checkpoints,max_wal_senders": 5.289050460814009e-05,
+      "group:log_checkpoints,wal_compression": 0.0,
+      "group:log_checkpoints,wal_sync_method": 1.79445779430964e-05,
+      "group:log_min_duration_statement": 0.0040681930227712045,
+      "group:log_min_duration_statement,logging_collector": 0.012288000000000007,
+      "group:logging_collector,max_standby_streaming_delay": 0.0,
+      "group:maintenance_work_mem": 0.013926400000000005,
+      "group:maintenance_work_mem,shared_buffers": 2.5773709013796125e-08,
+      "group:maintenance_work_mem,shared_buffers,work_mem": 0.07200000000000001,
+      "group:maintenance_work_mem,work_mem": 0.20703125,
+      "group:max_connections": 6.690223559559207e-07,
+      "group:max_connections,max_parallel_workers": 1.032060458351865e-08,
+      "group:max_connections,max_parallel_workers,max_parallel_workers_per_gather,work_mem": 3.3973791513386587e-06,
+      "group:max_connections,max_standby_streaming_delay": 2.3520317201575324e-06,
+      "group:max_connections,shared_buffers": 1.4615016373309073e-08,
+      "group:max_connections,work_mem": 4.0801161280013546e-08,
+      "group:max_locks_per_transaction,work_mem": 0.03125,
+      "group:max_parallel_workers": 0.0,
+      "group:max_parallel_workers,max_parallel_workers_per_gather": 0.0390625,
+      "group:max_parallel_workers,max_parallel_workers_per_gather,track_activity_query_size": 0.0007839866231326569,
+      "group:max_parallel_workers,max_parallel_workers_per_gather,work_mem": 0.00013926825441960548,
+      "group:max_parallel_workers,random_page_cost,seq_page_cost": 3.2958915605934006e-05,
+      "group:max_parallel_workers,work_mem": 0.0005404319552844603,
+      "group:max_parallel_workers_per_gather": 0.03200000000000001,
+      "group:max_standby_streaming_delay,work_mem": 9.671406556917049e-05,
+      "group:random_page_cost": 9.800132167323049e-07,
+      "group:random_page_cost,seq_page_cost": 1.3292279957849189e-06,
+      "group:shared_buffers": 0.003932160000000003,
+      "group:shared_buffers,work_mem": 0.015625,
+      "group:track_activity_query_size": 0.00010808639105689208,
+      "group:wal_compression,wal_sync_method": 0.03276800000000001,
+      "group:wal_compression,wal_writer_flush_after": 0.03125,
+      "group:wal_sync_method,wal_writer_flush_after": 7.030353943633108e-09,
+      "group:wal_writer_delay": 3.166189940082879e-10,
+      "group:wal_writer_flush_after": 9.807971461541725e-09,
+      "group:work_mem": 0.06000000000000001
+    },
+    "hypothesis_quota": {
+      "group:commit_delay,max_locks_per_transaction": 8,
+      "group:commit_delay,max_parallel_workers": 9,
+      "group:effective_io_concurrency,join_collapse_limit": 6,
+      "group:effective_io_concurrency,max_parallel_workers_per_gather": 8,
+      "group:join_collapse_limit,track_activity_query_size": 13,
+      "group:maintenance_work_mem,work_mem": 14,
+      "group:max_parallel_workers,max_parallel_workers_per_gather": 8,
+      "group:shared_buffers,work_mem": 7,
+      "group:wal_compression,wal_writer_flush_after": 7
+    },
+    "last_review": 94,
+    "nodes": {
+      "autovacuum_analyze_scale_factor": {
+        "entered": 22,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.9362813583927716,
+          0.10634370737322152
+        ],
+        "tests": 2,
+        "width": 0.15,
+        "window": [
+          {
+            "gain": -0.2691417491282981,
+            "position": -4.782917673463668,
+            "source": "group:autovacuum_analyze_scale_factor,log_checkpoints",
+            "trial": 40
+          }
+        ]
+      },
+      "autovacuum_freeze_max_age": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "autovacuum_max_workers": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "autovacuum_naptime": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "autovacuum_vacuum_cost_delay": {
+        "entered": 58,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.021021440020674048,
+          0.3210214400206741
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.17954664081864846,
+            "position": -0.7500000000000001,
+            "source": "coverage",
+            "trial": 60
+          },
+          {
+            "gain": -0.20675635926470776,
+            "position": 0.7500000000000002,
+            "source": "coverage",
+            "trial": 63
+          }
+        ]
+      },
+      "autovacuum_vacuum_cost_limit": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "autovacuum_vacuum_scale_factor": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "backend_flush_after": {
+        "entered": 10,
+        "fresh_tests": 2,
+        "last_gain": 12,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.109375,
+          0.0078125
+        ],
+        "tests": 2,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": 0.14518786579817694,
+            "position": -0.75,
+            "source": "coverage",
+            "trial": 12
+          },
+          {
+            "gain": -0.08988923024742868,
+            "position": -0.40625,
+            "source": "group:backend_flush_after,commit_delay",
+            "trial": 13
+          }
+        ]
+      },
+      "bgwriter_delay": {
+        "entered": 76,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.9816577556930557,
+          0.43753063169584994
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.2824383813665889,
+            "position": 1.9753231074345934,
+            "source": "group:bgwriter_delay,log_checkpoints",
+            "trial": 77
+          },
+          {
+            "gain": -0.2852982580349906,
+            "position": -0.7453125125514354,
+            "source": "coverage",
+            "trial": 78
+          }
+        ]
+      },
+      "bgwriter_flush_after": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "bgwriter_lru_maxpages": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "bgwriter_lru_multiplier": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "checkpoint_completion_target": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "checkpoint_flush_after": {
+        "entered": 64,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.91796875,
+          0.2421875
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.10949144034371538,
+            "position": 2.63671875,
+            "source": "group:checkpoint_flush_after,max_wal_senders",
+            "trial": 64
+          },
+          {
+            "gain": -0.16326148462596163,
+            "position": -0.7421875,
+            "source": "coverage",
+            "trial": 66
+          }
+        ]
+      },
+      "checkpoint_timeout": {
+        "entered": 10,
+        "fresh_tests": 0,
+        "last_gain": 10,
+        "lifetime_tests": 4,
+        "range_changes": [
+          {
+            "after": 0.12,
+            "before": 0.15,
+            "evidence": [
+              {
+                "gain": 0.028604245865098687,
+                "position": 0.41807909604519766,
+                "source": "group:checkpoint_timeout,max_wal_size,wal_buffers",
+                "trial": 10
+              },
+              {
+                "gain": -0.07104435327701536,
+                "position": 0.992467043314501,
+                "source": "group:checkpoint_timeout,max_wal_size,wal_buffers",
+                "trial": 11
+              },
+              {
+                "gain": -0.05008697630328168,
+                "position": -0.24105461393596975,
+                "source": "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay",
+                "trial": 14
+              },
+              {
+                "gain": -0.1566821241963794,
+                "position": -0.8493408662900187,
+                "source": "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay",
+                "trial": 20
+              }
+            ],
+            "knob": "checkpoint_timeout",
+            "reason": "covered_local_plateau_refine",
+            "trial": 20
+          }
+        ],
+        "region_initialized": true,
+        "tested_values": [
+          0.13644067796610168,
+          0.2853107344632768,
+          0.10028248587570622,
+          0.00903954802259887
+        ],
+        "tests": 4,
+        "width": 0.12,
+        "window": []
+      },
+      "checkpoint_warning": {
+        "entered": 82,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.8,
+          0.5
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.20910714145696074,
+            "position": 0.7500000000000001,
+            "source": "coverage",
+            "trial": 84
+          },
+          {
+            "gain": -0.1602056485599222,
+            "position": -0.7500000000000001,
+            "source": "coverage",
+            "trial": 87
+          }
+        ]
+      },
+      "commit_delay": {
+        "entered": 94,
+        "fresh_tests": 1,
+        "last_gain": 12,
+        "lifetime_tests": 3,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.0819
+        ],
+        "tests": 1,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": -0.4460748237049129,
+            "position": -2.2976,
+            "source": "group:commit_delay,max_parallel_workers",
+            "trial": 96
+          }
+        ]
+      },
+      "commit_siblings": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "deadlock_timeout": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "default_statistics_target": {
+        "entered": 10,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 3,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.8241800054904658,
+          0.056971676153418346
+        ],
+        "tests": 3,
+        "width": 0.15,
+        "window": [
+          {
+            "gain": -0.12051560870434036,
+            "position": 0.7503804568137455,
+            "source": "coverage",
+            "trial": 42
+          },
+          {
+            "gain": -0.13803586319996675,
+            "position": -4.364341738766571,
+            "source": "group:default_statistics_target",
+            "trial": 44
+          }
+        ]
+      },
+      "effective_cache_size": {
+        "entered": 10,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 3,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.22771822173019934,
+          0.23761565109779095,
+          0.9286098260989134
+        ],
+        "tests": 3,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": -0.21030906370958585,
+            "position": 3.553566417474856,
+            "source": "group:effective_cache_size,huge_pages",
+            "trial": 52
+          }
+        ]
+      },
+      "effective_io_concurrency": {
+        "entered": 52,
+        "fresh_tests": 5,
+        "last_gain": 18,
+        "lifetime_tests": 7,
+        "range_changes": [
+          {
+            "after": 0.12,
+            "before": 0.15,
+            "evidence": [
+              {
+                "gain": -0.1587256418195243,
+                "position": 0.7552083333333334,
+                "source": "coverage",
+                "trial": 54
+              },
+              {
+                "gain": -0.21294446790495714,
+                "position": 3.515625,
+                "source": "group:effective_io_concurrency,max_parallel_workers_per_gather",
+                "trial": 56
+              },
+              {
+                "gain": -0.2935703555815812,
+                "position": 0.9375,
+                "source": "group:effective_io_concurrency,jit",
+                "trial": 59
+              },
+              {
+                "gain": -0.18125435575813437,
+                "position": -2.3958333333333335,
+                "source": "group:effective_io_concurrency,track_activity_query_size",
+                "trial": 82
+              }
+            ],
+            "knob": "effective_io_concurrency",
+            "reason": "covered_local_plateau_refine",
+            "trial": 82
+          }
+        ],
+        "region_initialized": true,
+        "tested_values": [
+          0.50390625,
+          0.91796875,
+          0.53125,
+          0.03125,
+          0.96875
+        ],
+        "tests": 5,
+        "width": 0.12,
+        "window": [
+          {
+            "gain": -0.22679988925421607,
+            "position": 4.817708333333334,
+            "source": "group:effective_io_concurrency,join_collapse_limit",
+            "trial": 86
+          }
+        ]
+      },
+      "from_collapse_limit": {
+        "entered": 10,
+        "fresh_tests": 1,
+        "last_gain": 18,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.9354838709677419,
+          1.0
+        ],
+        "tests": 2,
+        "width": 0.1,
+        "window": [
+          {
+            "gain": -0.12051560870434036,
+            "position": 0.6451612903225812,
+            "source": "coverage",
+            "trial": 42
+          }
+        ]
+      },
+      "hot_standby_feedback": {
+        "entered": 34,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.0
+        ],
+        "tests": 2,
+        "width": 0.15,
+        "window": []
+      },
+      "huge_pages": {
+        "entered": 28,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 3,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.0
+        ],
+        "tests": 3,
+        "width": 0.15,
+        "window": []
+      },
+      "jit": {
+        "entered": 58,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          1.0
+        ],
+        "tests": 2,
+        "width": 0.15,
+        "window": []
+      },
+      "join_collapse_limit": {
+        "entered": 46,
+        "fresh_tests": 4,
+        "last_gain": null,
+        "lifetime_tests": 6,
+        "range_changes": [
+          {
+            "after": 0.12,
+            "before": 0.15,
+            "evidence": [
+              {
+                "gain": -0.20374664028755235,
+                "position": -0.6451612903225808,
+                "source": "coverage",
+                "trial": 48
+              },
+              {
+                "gain": -0.12041116579445077,
+                "position": 0.6451612903225805,
+                "source": "coverage",
+                "trial": 51
+              },
+              {
+                "gain": -0.08782190616412738,
+                "position": 4.731182795698925,
+                "source": "group:join_collapse_limit",
+                "trial": 53
+              }
+            ],
+            "knob": "join_collapse_limit",
+            "reason": "covered_local_plateau_refine",
+            "trial": 53
+          }
+        ],
+        "region_initialized": true,
+        "tested_values": [
+          0.1935483870967742,
+          0.3870967741935484,
+          1.0
+        ],
+        "tests": 4,
+        "width": 0.12,
+        "window": [
+          {
+            "gain": -0.22679988925421607,
+            "position": 5.913978494623656,
+            "source": "group:effective_io_concurrency,join_collapse_limit",
+            "trial": 86
+          }
+        ]
+      },
+      "log_checkpoints": {
+        "entered": 34,
+        "fresh_tests": 1,
+        "last_gain": 39,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.0,
+          1.0
+        ],
+        "tests": 2,
+        "width": 0.15,
+        "window": []
+      },
+      "log_connections": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "log_disconnections": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "log_min_duration_statement": {
+        "entered": 82,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.578873685438576,
+          0.2038799353344111
+        ],
+        "tests": 2,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": -0.20910714145696074,
+            "position": 0.7499875002083296,
+            "source": "coverage",
+            "trial": 84
+          },
+          {
+            "gain": -0.21316057299933439,
+            "position": -0.7499875002083299,
+            "source": "coverage",
+            "trial": 90
+          }
+        ]
+      },
+      "log_rotation_size": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "log_temp_files": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "logging_collector": {
+        "entered": 70,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 1,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.0
+        ],
+        "tests": 1,
+        "width": 0.15,
+        "window": []
+      },
+      "maintenance_work_mem": {
+        "entered": 10,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 4,
+        "range_changes": [
+          {
+            "after": 0.2,
+            "before": 0.25,
+            "evidence": [
+              {
+                "gain": -0.6570017760159004,
+                "position": 0.7500000163097891,
+                "source": "coverage",
+                "trial": 21
+              },
+              {
+                "gain": -0.18566095550713113,
+                "position": -1.3678885762943558,
+                "source": "group:maintenance_work_mem",
+                "trial": 22
+              },
+              {
+                "gain": -0.13719410458588638,
+                "position": -0.9600938737205222,
+                "source": "group:maintenance_work_mem",
+                "trial": 26
+              }
+            ],
+            "knob": "maintenance_work_mem",
+            "reason": "covered_local_plateau_refine",
+            "trial": 26
+          }
+        ],
+        "region_initialized": true,
+        "tested_values": [
+          0.9551522311082186,
+          0.42568008295718235,
+          0.5276287586006407,
+          0.05471088264610384
+        ],
+        "tests": 4,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.1568399959969597,
+            "position": -3.5647067219233373,
+            "source": "group:maintenance_work_mem,work_mem",
+            "trial": 67
+          }
+        ]
+      },
+      "max_connections": {
+        "entered": 10,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.14166666666666666,
+          0.3125
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.26508164259467304,
+            "position": -0.9791666666666665,
+            "source": "group:max_connections,shared_buffers",
+            "trial": 43
+          }
+        ]
+      },
+      "max_locks_per_transaction": {
+        "entered": 94,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.2,
+        "window": []
+      },
+      "max_parallel_maintenance_workers": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "max_parallel_workers": {
+        "entered": 10,
+        "fresh_tests": 4,
+        "last_gain": null,
+        "lifetime_tests": 5,
+        "range_changes": [
+          {
+            "after": 0.2,
+            "before": 0.25,
+            "evidence": [
+              {
+                "gain": -0.1468161078476854,
+                "position": 1.6666666666666667,
+                "source": "group:max_parallel_workers,max_parallel_workers_per_gather",
+                "trial": 46
+              },
+              {
+                "gain": -0.14566993305667664,
+                "position": 0.41666666666666674,
+                "source": "group:max_parallel_workers,max_parallel_workers_per_gather",
+                "trial": 50
+              },
+              {
+                "gain": -0.34434340862468804,
+                "position": -1.0,
+                "source": "group:max_parallel_workers,random_page_cost,seq_page_cost",
+                "trial": 58
+              }
+            ],
+            "knob": "max_parallel_workers",
+            "reason": "covered_local_plateau_refine",
+            "trial": 58
+          }
+        ],
+        "region_initialized": true,
+        "tested_values": [
+          0.6666666666666666,
+          0.8958333333333334,
+          0.5833333333333334,
+          0.22916666666666666,
+          0.625
+        ],
+        "tests": 5,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.4460748237049129,
+            "position": 0.7291666666666665,
+            "source": "group:commit_delay,max_parallel_workers",
+            "trial": 96
+          }
+        ]
+      },
+      "max_parallel_workers_per_gather": {
+        "entered": 10,
+        "fresh_tests": 3,
+        "last_gain": null,
+        "lifetime_tests": 4,
+        "range_changes": [
+          {
+            "after": 0.2,
+            "before": 0.25,
+            "evidence": [
+              {
+                "gain": -0.1468161078476854,
+                "position": 0.75,
+                "source": "group:max_parallel_workers,max_parallel_workers_per_gather",
+                "trial": 46
+              },
+              {
+                "gain": -0.14566993305667664,
+                "position": 2.0,
+                "source": "group:max_parallel_workers,max_parallel_workers_per_gather",
+                "trial": 50
+              },
+              {
+                "gain": -0.21294446790495714,
+                "position": -0.5,
+                "source": "group:effective_io_concurrency,max_parallel_workers_per_gather",
+                "trial": 56
+              }
+            ],
+            "knob": "max_parallel_workers_per_gather",
+            "reason": "covered_local_plateau_refine",
+            "trial": 56
+          }
+        ],
+        "region_initialized": true,
+        "tested_values": [
+          0.0,
+          0.375,
+          0.6875,
+          0.0625
+        ],
+        "tests": 4,
+        "width": 0.2,
+        "window": []
+      },
+      "max_pred_locks_per_transaction": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "max_replication_slots": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "max_standby_streaming_delay": {
+        "entered": 22,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.33856553811487294
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.20850518654722877,
+            "position": -0.7499975000083333,
+            "source": "coverage",
+            "trial": 57
+          }
+        ]
+      },
+      "max_wal_senders": {
+        "entered": 64,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.09375,
+          0.9375
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.16326148462596163,
+            "position": -0.78125,
+            "source": "coverage",
+            "trial": 66
+          },
+          {
+            "gain": -0.17028251365678942,
+            "position": 3.4375,
+            "source": "group:log_checkpoints,max_wal_senders",
+            "trial": 71
+          }
+        ]
+      },
+      "max_wal_size": {
+        "entered": 10,
+        "fresh_tests": 0,
+        "last_gain": 10,
+        "lifetime_tests": 4,
+        "range_changes": [
+          {
+            "after": 0.12,
+            "before": 0.15,
+            "evidence": [
+              {
+                "gain": 0.028604245865098687,
+                "position": 0.4030157930107525,
+                "source": "group:checkpoint_timeout,max_wal_size,wal_buffers",
+                "trial": 10
+              },
+              {
+                "gain": -0.07104435327701536,
+                "position": 1.2647009408602155,
+                "source": "group:checkpoint_timeout,max_wal_size,wal_buffers",
+                "trial": 11
+              },
+              {
+                "gain": -0.05008697630328168,
+                "position": -0.6432711693548387,
+                "source": "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay",
+                "trial": 14
+              }
+            ],
+            "knob": "max_wal_size",
+            "reason": "supported_interior_refine",
+            "trial": 14
+          }
+        ],
+        "region_initialized": true,
+        "tested_values": [
+          0.4889742943548387,
+          0.678679435483871,
+          0.3924836189516129
+        ],
+        "tests": 4,
+        "width": 0.12,
+        "window": []
+      },
+      "max_worker_processes": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "min_wal_size": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "random_page_cost": {
+        "entered": 52,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.6815258542633581,
+          0.4710906728666207
+        ],
+        "tests": 2,
+        "width": 0.15,
+        "window": [
+          {
+            "gain": -0.1587256418195243,
+            "position": 0.7500000000000003,
+            "source": "coverage",
+            "trial": 54
+          },
+          {
+            "gain": -0.34434340862468804,
+            "position": -0.6529012093115824,
+            "source": "group:max_parallel_workers,random_page_cost,seq_page_cost",
+            "trial": 58
+          }
+        ]
+      },
+      "seq_page_cost": {
+        "entered": 46,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.3116064854440128,
+          0.9241870830089592
+        ],
+        "tests": 2,
+        "width": 0.15,
+        "window": [
+          {
+            "gain": -0.20374664028755235,
+            "position": -0.75,
+            "source": "coverage",
+            "trial": 48
+          },
+          {
+            "gain": -0.34434340862468804,
+            "position": 3.333870650432977,
+            "source": "group:max_parallel_workers,random_page_cost,seq_page_cost",
+            "trial": 58
+          }
+        ]
+      },
+      "shared_buffers": {
+        "entered": 10,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 3,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.8890685398447307,
+          0.48611296818758065,
+          0.5060535419614824
+        ],
+        "tests": 3,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": -0.26508164259467304,
+            "position": -0.8618222170094683,
+            "source": "group:max_connections,shared_buffers",
+            "trial": 43
+          },
+          {
+            "gain": -0.2157777438910915,
+            "position": -0.7820599219138611,
+            "source": "group:huge_pages,shared_buffers",
+            "trial": 55
+          }
+        ]
+      },
+      "temp_buffers": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "track_activity_query_size": {
+        "entered": 76,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.34465664090660664,
+          0.7671637810721369
+        ],
+        "tests": 2,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": -0.2852982580349906,
+            "position": -0.7500178610270547,
+            "source": "coverage",
+            "trial": 78
+          },
+          {
+            "gain": -0.18125435575813437,
+            "position": 0.9400106996350663,
+            "source": "group:effective_io_concurrency,track_activity_query_size",
+            "trial": 82
+          }
+        ]
+      },
+      "vacuum_cost_delay": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "vacuum_cost_limit": {
+        "entered": null,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 0,
+        "range_changes": [],
+        "tested_values": [],
+        "tests": 0,
+        "width": 0.15,
+        "window": []
+      },
+      "wal_buffers": {
+        "entered": 10,
+        "fresh_tests": 4,
+        "last_gain": 10,
+        "lifetime_tests": 4,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.9263055148853099,
+          0.9521717911176184,
+          0.9458272327964861,
+          0.9970717423133236
+        ],
+        "tests": 4,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": 0.028604245865098687,
+            "position": 0.890190336749634,
+            "source": "group:checkpoint_timeout,max_wal_size,wal_buffers",
+            "trial": 10
+          },
+          {
+            "gain": -0.07104435327701536,
+            "position": 0.10346510492923411,
+            "source": "group:checkpoint_timeout,max_wal_size,wal_buffers",
+            "trial": 11
+          },
+          {
+            "gain": -0.05008697630328168,
+            "position": 0.07808687164470474,
+            "source": "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay",
+            "trial": 14
+          },
+          {
+            "gain": -0.1566821241963794,
+            "position": 0.283064909712055,
+            "source": "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay",
+            "trial": 20
+          }
+        ]
+      },
+      "wal_compression": {
+        "entered": 70,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 1,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          1.0
+        ],
+        "tests": 1,
+        "width": 0.15,
+        "window": []
+      },
+      "wal_sync_method": {
+        "entered": 28,
+        "fresh_tests": 1,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.6666666666666666,
+          1.0
+        ],
+        "tests": 2,
+        "width": 0.15,
+        "window": []
+      },
+      "wal_writer_delay": {
+        "entered": 10,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 2,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.8399426645919063,
+          0.938747099997261
+        ],
+        "tests": 2,
+        "width": 0.2,
+        "window": [
+          {
+            "gain": -0.05008697630328168,
+            "position": -0.7094009855935018,
+            "source": "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay",
+            "trial": 14
+          },
+          {
+            "gain": -0.1566821241963794,
+            "position": -0.21537880856672798,
+            "source": "group:checkpoint_timeout,max_wal_size,wal_buffers,wal_writer_delay",
+            "trial": 20
+          }
+        ]
+      },
+      "wal_writer_flush_after": {
+        "entered": 10,
+        "fresh_tests": 0,
+        "last_gain": null,
+        "lifetime_tests": 1,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.791015625
+        ],
+        "tests": 1,
+        "width": 0.15,
+        "window": []
+      },
+      "work_mem": {
+        "entered": 10,
+        "fresh_tests": 2,
+        "last_gain": null,
+        "lifetime_tests": 3,
+        "range_changes": [],
+        "region_initialized": true,
+        "tested_values": [
+          0.10640690803855095,
+          0.9751599628765713,
+          0.4495043032687511
+        ],
+        "tests": 3,
+        "width": 0.25,
+        "window": [
+          {
+            "gain": -0.1773462589986305,
+            "position": 2.7249550984397257,
+            "source": "group:work_mem",
+            "trial": 47
+          },
+          {
+            "gain": -0.1568399959969597,
+            "position": 0.6223324600084452,
+            "source": "group:maintenance_work_mem,work_mem",
+            "trial": 67
+          }
+        ]
+      }
+    }
+  },
+  "groups": [
+    [
+      "checkpoint_timeout",
+      "max_wal_size",
+      "wal_buffers",
+      "wal_writer_delay"
+    ],
+    [
+      "max_parallel_workers",
+      "max_parallel_workers_per_gather"
+    ],
+    [
+      "effective_io_concurrency",
+      "max_parallel_workers_per_gather"
+    ],
+    [
+      "effective_io_concurrency",
+      "join_collapse_limit"
+    ],
+    [
+      "effective_io_concurrency",
+      "random_page_cost"
+    ],
+    [
+      "maintenance_work_mem",
+      "work_mem"
+    ],
+    [
+      "commit_delay",
+      "max_parallel_workers"
+    ]
+  ],
+  "parameters": {
+    "active_target": 18,
+    "audit_size": 4,
+    "budget": 100,
+    "candidate_pool_size": 100,
+    "coverage_interval": 3,
+    "delta": 0.01,
+    "effective_active_target": 18,
+    "eta": 0.8,
+    "expert_history_policy": "all_completed_trials_v1",
+    "expert_prompt_layout": "shared_history_v1",
+    "fantasies": 16,
+    "final_polish_evaluations": 6,
+    "max_swaps": 2,
+    "minimum_executed_tests": 2,
+    "posterior_samples": 256,
+    "probe_interval": 8,
+    "search_policy": "stable-v1",
+    "seed": 0,
+    "shortlist_size": 16,
+    "space_fingerprint": "770baaa17a0d0569976a068c1cc507e1c9549b6c5b94dd38258fb92c018934d6",
+    "structure_episode": 6
+  },
+  "quotas": {
+    "concurrency_execution_expert": 23,
+    "memory_expert": 14,
+    "optimizer_workload_expert": 25,
+    "storage_wal_expert": 18
+  },
+  "regions": {
+    "concurrency_execution_expert": {
+      "backend_flush_after": {
+        "center": 0.109375,
+        "halfwidth": 0.25
+      },
+      "commit_delay": {
+        "center": 0.6563,
+        "halfwidth": 0.25
+      },
+      "hot_standby_feedback": {
+        "center": 1.0,
+        "halfwidth": 0.15,
+        "values": [
+          true
+        ]
+      },
+      "log_min_duration_statement": {
+        "center": 0.3913768103864936,
+        "halfwidth": 0.25
+      },
+      "logging_collector": {
+        "center": 1.0,
+        "halfwidth": 0.15,
+        "values": [
+          true
+        ]
+      },
+      "max_connections": {
+        "center": 0.5083333333333333,
+        "halfwidth": 0.2
+      },
+      "max_locks_per_transaction": {
+        "center": 0.8263888888888888,
+        "halfwidth": 0.2
+      },
+      "max_parallel_workers": {
+        "center": 0.4791666666666667,
+        "halfwidth": 0.2
+      },
+      "max_parallel_workers_per_gather": {
+        "center": 0.1875,
+        "halfwidth": 0.2
+      },
+      "max_standby_streaming_delay": {
+        "center": 0.4885650381165396,
+        "halfwidth": 0.2
+      },
+      "work_mem": {
+        "center": 0.2939211882666398,
+        "halfwidth": 0.25
+      }
+    },
+    "memory_expert": {
+      "effective_cache_size": {
+        "center": 0.04021822173019935,
+        "halfwidth": 0.25
+      },
+      "huge_pages": {
+        "center": 1.0,
+        "halfwidth": 0.15,
+        "values": [
+          "try"
+        ]
+      },
+      "maintenance_work_mem": {
+        "center": 0.7676522270307713,
+        "halfwidth": 0.2
+      },
+      "max_connections": {
+        "center": 0.5083333333333333,
+        "halfwidth": 0.2
+      },
+      "shared_buffers": {
+        "center": 0.7015685224399477,
+        "halfwidth": 0.25
+      },
+      "wal_buffers": {
+        "center": 0.9263055148853099,
+        "halfwidth": 0.25
+      },
+      "work_mem": {
+        "center": 0.2939211882666398,
+        "halfwidth": 0.25
+      }
+    },
+    "optimizer_workload_expert": {
+      "default_statistics_target": {
+        "center": 0.711622936968404,
+        "halfwidth": 0.15
+      },
+      "effective_io_concurrency": {
+        "center": 0.390625,
+        "halfwidth": 0.12
+      },
+      "from_collapse_limit": {
+        "center": 0.9354838709677419,
+        "halfwidth": 0.1
+      },
+      "jit": {
+        "center": 0.0,
+        "halfwidth": 0.15,
+        "values": [
+          false
+        ]
+      },
+      "join_collapse_limit": {
+        "center": 0.2903225806451613,
+        "halfwidth": 0.12
+      },
+      "max_parallel_workers": {
+        "center": 0.4791666666666667,
+        "halfwidth": 0.2
+      },
+      "max_parallel_workers_per_gather": {
+        "center": 0.1875,
+        "halfwidth": 0.2
+      },
+      "random_page_cost": {
+        "center": 0.569,
+        "halfwidth": 0.15
+      },
+      "seq_page_cost": {
+        "center": 0.42399999999999993,
+        "halfwidth": 0.15
+      },
+      "track_activity_query_size": {
+        "center": 0.5321611061633703,
+        "halfwidth": 0.25
+      }
+    },
+    "storage_wal_expert": {
+      "autovacuum_analyze_scale_factor": {
+        "center": 0.8237813583927717,
+        "halfwidth": 0.15
+      },
+      "autovacuum_vacuum_cost_delay": {
+        "center": 0.17102144002067407,
+        "halfwidth": 0.2
+      },
+      "bgwriter_delay": {
+        "center": 0.586593134206137,
+        "halfwidth": 0.2
+      },
+      "checkpoint_flush_after": {
+        "center": 0.390625,
+        "halfwidth": 0.2
+      },
+      "checkpoint_timeout": {
+        "center": 0.13644067796610168,
+        "halfwidth": 0.12
+      },
+      "checkpoint_warning": {
+        "center": 0.65,
+        "halfwidth": 0.2
+      },
+      "effective_io_concurrency": {
+        "center": 0.390625,
+        "halfwidth": 0.12
+      },
+      "log_checkpoints": {
+        "center": 0.0,
+        "halfwidth": 0.15,
+        "values": [
+          false
+        ]
+      },
+      "maintenance_work_mem": {
+        "center": 0.7676522270307713,
+        "halfwidth": 0.2
+      },
+      "max_wal_senders": {
+        "center": 0.25,
+        "halfwidth": 0.2
+      },
+      "max_wal_size": {
+        "center": 0.4889742943548387,
+        "halfwidth": 0.12
+      },
+      "wal_buffers": {
+        "center": 0.9263055148853099,
+        "halfwidth": 0.25
+      },
+      "wal_compression": {
+        "center": 0.0,
+        "halfwidth": 0.15,
+        "values": [
+          false
+        ]
+      },
+      "wal_sync_method": {
+        "center": 0.3333333333333333,
+        "halfwidth": 0.15,
+        "values": [
+          "fdatasync"
+        ]
+      },
+      "wal_writer_delay": {
+        "center": 0.9818228617106066,
+        "halfwidth": 0.2
+      },
+      "wal_writer_flush_after": {
+        "center": 0.8212890625,
+        "halfwidth": 0.15
+      }
+    }
+  },
+  "residuals": [
+    1.3814075283204141,
+    1.5806625473024871,
+    4.129210034228533,
+    3.0361763180549235,
+    0.13268278521592158,
+    1.7290491308400626,
+    1.1866189140644423,
+    2.1544561125614026,
+    3.007475063747396,
+    1.2335311743411193,
+    1.615654363073196,
+    9.134963960879093,
+    3.389717501865954,
+    2.1894094030820077,
+    1.026619895143546,
+    3.2434109993807,
+    0.8699554766017125,
+    1.800333924516284,
+    15.76903193284728,
+    3.2309324034147,
+    0.8455809855132126,
+    2.2183504520955313,
+    0.51874124258052,
+    0.8293213803046146,
+    0.06592272124367225,
+    0.3026303780670047,
+    0.626429114109769,
+    0.07550143960762279,
+    0.5246846330647736,
+    1.0493649652575185,
+    0.12028788942445628,
+    1.0169733312847742,
+    0.3352425404212508,
+    0.7181201643269152,
+    0.24470244745344646,
+    0.47492382146461837,
+    0.13477726070602775,
+    0.21238112074000656,
+    0.7528972919878014,
+    0.9764987054129447,
+    0.17388243701942438,
+    0.09363092141648617,
+    0.2086524702068373,
+    0.5009118276505792,
+    0.20422723194850612,
+    0.23798564036075234,
+    0.02649130167238917,
+    0.6164531088214128,
+    0.6312788783884634,
+    0.08964582050365764,
+    0.2789345091543764,
+    0.06844111168722809,
+    3.617218395386174,
+    0.6503748809550876,
+    0.4065202092089135,
+    0.5560597539363517,
+    0.10920137014477142,
+    0.2670012127736467,
+    0.049649523491405737,
+    0.9190511298987274,
+    0.2911416323016423,
+    0.2475707752171783,
+    0.25031349796128816,
+    0.1463127591011453,
+    4.143186484710759,
+    3.825870289311672,
+    0.11361390746506121,
+    0.41160643566618227,
+    0.9174879191017938,
+    0.15366188585609084,
+    0.5557774273042886,
+    0.5410000745824478,
+    0.17429936047072156,
+    0.7472494614958277,
+    0.2255087715701381,
+    4.929123715079247,
+    0.12176472032595347,
+    0.09266430433560345,
+    0.0804536278841053,
+    0.560945246997864,
+    0.1422927740122253,
+    0.3494595763498298,
+    0.07664296731394347,
+    0.190067237059189,
+    0.23232391718742484,
+    0.4169184310944396,
+    0.7501918155000019,
+    2.1546104706029334,
+    0.2941178668810332,
+    2.973659870890185
+  ],
+  "rng_state": {
+    "bit_generator": "PCG64",
+    "has_uint32": 1,
+    "state": {
+      "inc": 87136372517582989555478159403783844777,
+      "state": 31653725134878545018405950539328400399
+    },
+    "uinteger": 1855089862
+  },
+  "version": 1
+}

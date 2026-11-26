@@ -1,0 +1,805 @@
+{
+  "D3": {
+    "anchor": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers": 23,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "capacity_72": true,
+    "capacity_provenance": "previous 72-point capacity remains available under the less restrictive filter; actual test sequences are checked again",
+    "capacity_reason": "",
+    "direction_id": "D3",
+    "effective_numeric_regions_by_patch": [
+      [
+        {
+          "center": 0.2903225806451613,
+          "global_component_probability": 0.1,
+          "knob": "join_collapse_limit",
+          "normalized_hi": 0.4403225806451613,
+          "normalized_lo": 0.14032258064516132,
+          "width": 0.15
+        },
+        {
+          "center": 0.4791666666666667,
+          "global_component_probability": 0.1,
+          "knob": "max_parallel_workers",
+          "normalized_hi": 0.7291666666666667,
+          "normalized_lo": 0.22916666666666669,
+          "width": 0.25
+        }
+      ]
+    ],
+    "expert_regions": {
+      "optimizer_workload_expert": {
+        "join_collapse_limit": {
+          "center": 0.2903225806451613,
+          "halfwidth": 0.15
+        },
+        "max_parallel_workers": {
+          "center": 0.4791666666666667,
+          "halfwidth": 0.25
+        }
+      }
+    },
+    "hard_constraints": [
+      {
+        "description": "Conservative 80% host-memory envelope with two work_mem operators per terminal",
+        "limit": 105490924,
+        "terms": [
+          {
+            "knob": "shared_buffers",
+            "multiplier": 8
+          },
+          {
+            "knob": "work_mem",
+            "multiplier": 32
+          },
+          {
+            "knob": "maintenance_work_mem",
+            "multiplier": 1
+          },
+          {
+            "knob": "temp_buffers",
+            "multiplier": 16
+          }
+        ],
+        "type": "sum_le"
+      }
+    ],
+    "historical_exclusion": "only snapshot observations with trial IDs 0--19",
+    "historical_key": "group:join_collapse_limit,max_parallel_workers",
+    "mode": {
+      "experts": [
+        "optimizer_workload_expert"
+      ],
+      "kind": "local",
+      "knobs": [
+        "join_collapse_limit",
+        "max_parallel_workers"
+      ],
+      "patches": []
+    },
+    "outside_fixity_guaranteed": true,
+    "outside_values_before_repair": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "previous_historical_exclusion": "all source executed configurations",
+    "repair_semantics": "production bounded_patch; repair can change group-external resource knobs when feasible; never newly filtered here",
+    "space_source": "/root/OpAdviserPrivate/Entropy-Guided-Value-of-Information-Allocation-for-LLM-Assisted-Database-Tuning/configs/knobs/postgresql_60_diagnostic.yaml"
+  },
+  "D4": {
+    "anchor": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers": 23,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "capacity_72": true,
+    "capacity_provenance": "previous 72-point capacity remains available under the less restrictive filter; actual test sequences are checked again",
+    "capacity_reason": "",
+    "direction_id": "D4",
+    "effective_numeric_regions_by_patch": [
+      [
+        {
+          "center": 0.875,
+          "global_component_probability": 0.1,
+          "knob": "maintenance_work_mem",
+          "normalized_hi": 1,
+          "normalized_lo": 0.7676522270307713,
+          "width": 0.25
+        }
+      ]
+    ],
+    "expert_regions": {
+      "memory_expert": {
+        "maintenance_work_mem": {
+          "center": 0.7676522270307713,
+          "halfwidth": 0.25
+        }
+      }
+    },
+    "hard_constraints": [
+      {
+        "description": "Conservative 80% host-memory envelope with two work_mem operators per terminal",
+        "limit": 105490924,
+        "terms": [
+          {
+            "knob": "shared_buffers",
+            "multiplier": 8
+          },
+          {
+            "knob": "work_mem",
+            "multiplier": 32
+          },
+          {
+            "knob": "maintenance_work_mem",
+            "multiplier": 1
+          },
+          {
+            "knob": "temp_buffers",
+            "multiplier": 16
+          }
+        ],
+        "type": "sum_le"
+      }
+    ],
+    "historical_exclusion": "only snapshot observations with trial IDs 0--19",
+    "historical_key": "group:maintenance_work_mem",
+    "mode": {
+      "experts": [
+        "memory_expert"
+      ],
+      "kind": "local",
+      "knobs": [
+        "maintenance_work_mem"
+      ],
+      "patches": [
+        {
+          "maintenance_work_mem": 2097152
+        }
+      ]
+    },
+    "outside_fixity_guaranteed": true,
+    "outside_values_before_repair": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers": 23,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "previous_historical_exclusion": "all source executed configurations",
+    "repair_semantics": "production bounded_patch; repair can change group-external resource knobs when feasible; never newly filtered here",
+    "space_source": "/root/OpAdviserPrivate/Entropy-Guided-Value-of-Information-Allocation-for-LLM-Assisted-Database-Tuning/configs/knobs/postgresql_60_diagnostic.yaml"
+  },
+  "D5": {
+    "anchor": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers": 23,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "capacity_72": true,
+    "capacity_provenance": "previous 72-point capacity remains available under the less restrictive filter; actual test sequences are checked again",
+    "capacity_reason": "",
+    "direction_id": "D5",
+    "effective_numeric_regions_by_patch": [
+      [
+        {
+          "center": 0.4791666666666667,
+          "global_component_probability": 0.1,
+          "knob": "max_parallel_workers",
+          "normalized_hi": 0.7291666666666667,
+          "normalized_lo": 0.22916666666666669,
+          "width": 0.25
+        },
+        {
+          "center": 0.1875,
+          "global_component_probability": 0.1,
+          "knob": "max_parallel_workers_per_gather",
+          "normalized_hi": 0.4375,
+          "normalized_lo": 0,
+          "width": 0.25
+        }
+      ]
+    ],
+    "expert_regions": {
+      "concurrency_execution_expert": {
+        "max_parallel_workers": {
+          "center": 0.4791666666666667,
+          "halfwidth": 0.25
+        },
+        "max_parallel_workers_per_gather": {
+          "center": 0.1875,
+          "halfwidth": 0.25
+        }
+      },
+      "optimizer_workload_expert": {
+        "max_parallel_workers": {
+          "center": 0.4791666666666667,
+          "halfwidth": 0.25
+        },
+        "max_parallel_workers_per_gather": {
+          "center": 0.1875,
+          "halfwidth": 0.25
+        }
+      }
+    },
+    "hard_constraints": [
+      {
+        "description": "Conservative 80% host-memory envelope with two work_mem operators per terminal",
+        "limit": 105490924,
+        "terms": [
+          {
+            "knob": "shared_buffers",
+            "multiplier": 8
+          },
+          {
+            "knob": "work_mem",
+            "multiplier": 32
+          },
+          {
+            "knob": "maintenance_work_mem",
+            "multiplier": 1
+          },
+          {
+            "knob": "temp_buffers",
+            "multiplier": 16
+          }
+        ],
+        "type": "sum_le"
+      }
+    ],
+    "historical_exclusion": "only snapshot observations with trial IDs 0--19",
+    "historical_key": "group:max_parallel_workers,max_parallel_workers_per_gather",
+    "mode": {
+      "experts": [
+        "concurrency_execution_expert",
+        "optimizer_workload_expert"
+      ],
+      "kind": "joint",
+      "knobs": [
+        "max_parallel_workers",
+        "max_parallel_workers_per_gather"
+      ],
+      "patches": []
+    },
+    "outside_fixity_guaranteed": true,
+    "outside_values_before_repair": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "previous_historical_exclusion": "all source executed configurations",
+    "repair_semantics": "production bounded_patch; repair can change group-external resource knobs when feasible; never newly filtered here",
+    "space_source": "/root/OpAdviserPrivate/Entropy-Guided-Value-of-Information-Allocation-for-LLM-Assisted-Database-Tuning/configs/knobs/postgresql_60_diagnostic.yaml"
+  },
+  "D7": {
+    "anchor": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers": 23,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "shared_buffers": 801614,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "capacity_72": true,
+    "capacity_provenance": "previous 72-point capacity remains available under the less restrictive filter; actual test sequences are checked again",
+    "capacity_reason": "",
+    "direction_id": "D7",
+    "effective_numeric_regions_by_patch": [
+      [
+        {
+          "center": 0.75,
+          "global_component_probability": 0.1,
+          "knob": "shared_buffers",
+          "normalized_hi": 1,
+          "normalized_lo": 0.7015685224399477,
+          "width": 0.25
+        }
+      ]
+    ],
+    "expert_regions": {
+      "memory_expert": {
+        "shared_buffers": {
+          "center": 0.7015685224399477,
+          "halfwidth": 0.25
+        }
+      }
+    },
+    "hard_constraints": [
+      {
+        "description": "Conservative 80% host-memory envelope with two work_mem operators per terminal",
+        "limit": 105490924,
+        "terms": [
+          {
+            "knob": "shared_buffers",
+            "multiplier": 8
+          },
+          {
+            "knob": "work_mem",
+            "multiplier": 32
+          },
+          {
+            "knob": "maintenance_work_mem",
+            "multiplier": 1
+          },
+          {
+            "knob": "temp_buffers",
+            "multiplier": 16
+          }
+        ],
+        "type": "sum_le"
+      }
+    ],
+    "historical_exclusion": "only snapshot observations with trial IDs 0--19",
+    "historical_key": "group:shared_buffers",
+    "mode": {
+      "experts": [
+        "memory_expert"
+      ],
+      "kind": "local",
+      "knobs": [
+        "shared_buffers"
+      ],
+      "patches": [
+        {
+          "shared_buffers": 1048576
+        }
+      ]
+    },
+    "outside_fixity_guaranteed": true,
+    "outside_values_before_repair": {
+      "autovacuum_analyze_scale_factor": 0.20682643280622906,
+      "autovacuum_freeze_max_age": 940392019,
+      "autovacuum_max_workers": 5,
+      "autovacuum_naptime": 7,
+      "autovacuum_vacuum_cost_delay": 16.273165442088082,
+      "autovacuum_vacuum_cost_limit": 9971,
+      "autovacuum_vacuum_scale_factor": 0.34518471955676616,
+      "backend_flush_after": 28,
+      "bgwriter_delay": 149,
+      "bgwriter_flush_after": 168,
+      "bgwriter_lru_maxpages": 424,
+      "bgwriter_lru_multiplier": 7.534465385839052,
+      "checkpoint_completion_target": 0.7380834816084978,
+      "checkpoint_flush_after": 100,
+      "checkpoint_timeout": 543,
+      "checkpoint_warning": 195,
+      "commit_delay": 6563,
+      "commit_siblings": 4,
+      "deadlock_timeout": 4873,
+      "default_statistics_target": 265,
+      "effective_cache_size": 589691,
+      "effective_io_concurrency": 100,
+      "from_collapse_limit": 30,
+      "hot_standby_feedback": true,
+      "huge_pages": "try",
+      "jit": false,
+      "join_collapse_limit": 10,
+      "log_checkpoints": true,
+      "log_connections": false,
+      "log_disconnections": false,
+      "log_min_duration_statement": 23482,
+      "log_rotation_size": 598406,
+      "log_temp_files": 962042,
+      "logging_collector": true,
+      "maintenance_work_mem": 1156407,
+      "max_connections": 276,
+      "max_locks_per_transaction": 849,
+      "max_parallel_maintenance_workers": 8,
+      "max_parallel_workers": 23,
+      "max_parallel_workers_per_gather": 3,
+      "max_pred_locks_per_transaction": 340,
+      "max_replication_slots": 21,
+      "max_standby_streaming_delay": 146569,
+      "max_wal_senders": 8,
+      "max_wal_size": 16546,
+      "max_worker_processes": 45,
+      "min_wal_size": 86,
+      "random_page_cost": 4.983180979843507,
+      "seq_page_cost": 1.1361597281660192,
+      "temp_buffers": 34300,
+      "track_activity_query_size": 40951,
+      "vacuum_cost_delay": 8.968012322637598,
+      "vacuum_cost_limit": 3,
+      "wal_buffers": 1897,
+      "wal_compression": false,
+      "wal_sync_method": "fdatasync",
+      "wal_writer_delay": 882,
+      "wal_writer_flush_after": 1682,
+      "work_mem": 7854
+    },
+    "previous_historical_exclusion": "all source executed configurations",
+    "repair_semantics": "production bounded_patch; repair can change group-external resource knobs when feasible; never newly filtered here",
+    "space_source": "/root/OpAdviserPrivate/Entropy-Guided-Value-of-Information-Allocation-for-LLM-Assisted-Database-Tuning/configs/knobs/postgresql_60_diagnostic.yaml"
+  }
+}
