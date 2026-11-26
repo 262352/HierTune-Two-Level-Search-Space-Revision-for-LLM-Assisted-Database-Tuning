@@ -2,28 +2,25 @@
 
 [中文](README.zh-CN.md) · [English](README.md)
 
-## 1. HierTune_v1：论文方法原文
+## 1. HierTune_v1：论文方法（中文）
 
 代码目录：`hiertune_v1/src/cognitune/`。V2的代码与运行入口独立保存在 `hiertune_v2/`。
 
-### Overview
+### 整体框架
 
-As illustrated in the framework overview, HierTune adaptively revises knowledge-guided search-space priors through coordinated local and global updates. 
-Multiple domain experts organize active knobs into sparse, each maintaining an independent recommended region.
-At the micro level, HierTune uses execution feedback to revise local regions and knob combinations without directly changing the global active set.
-At the macro level, it periodically reassesses the active  knob and overall reference ranges using estimated removal losses and updated expert recommendations. 
-To explore the evolving subspaces, HierTune progressively allocates candidates by combining these estimates with region scale and current coverage, adapting search effort to spatial revision and exploration progress. 
-Candidates from all spaces enter a unified pool, where qLogNEI selects one configuration for real execution. The resulting feedback updates the shared Gaussian process (GP) and informs subsequent revisions, forming a closed tuning loop.
+HierTune通过协调局部与全局更新，自适应修订领域知识引导的搜索空间先验。多个领域专家将活动旋钮组织为稀疏旋钮组，每个组独立维护推荐区域。在微观层面，系统依据执行反馈修订局部区域与旋钮组合，不直接改变全局活动集合；在宏观层面，系统结合估计的移除损失与更新后的专家建议，周期性审查活动旋钮及整体参考范围。
 
-### Multi-Expert Knob Initialization
+为探索持续演化的子空间，HierTune结合改善机会估计、区域尺度与当前覆盖程度，逐步分配候选配置，使搜索投入适应空间修订与探索进展。所有子空间的候选进入统一候选池，由qLogNEI选择一个配置进行真实执行。执行反馈更新共享高斯过程（GP），并为后续修订提供依据，形成闭环调优流程。
 
-Database knobs affect different performance mechanisms. We therefore use four domain experts covering memory and cache, concurrency and execution, storage and write-ahead logging (WAL), and query optimization and workload analysis. Following MCTuner, a manager agent identifies the relevant experts for each knob and assigns weights based on the workload, hardware environment, and tuning objective. These nonnegative weights sum to one for each knob. Experts use parameter documentation and initial observations, together with the hardware and workload information, to score knob importance on a 1--100 scale and recommend value ranges. The system aggregates their scores through a weighted average to rank the knobs.
+### 多专家旋钮初始化
 
-The system selects the top 20 knobs to form the initial active set $A_0$, subject to parameter dependencies, resource constraints, and domain coverage. Expert recommendations also define the overall reference ranges $\mathcal R_0^{\mathrm{ref}}$. Unselected knobs remain in $K$ for reconsideration during later macro-level revisions.
+数据库旋钮影响不同的性能机制。因此，我们设置四个领域专家，分别负责内存与缓存、并发与执行、存储与预写日志（WAL），以及查询优化与工作负载分析。参考MCTuner，管理智能体根据工作负载、硬件环境与调优目标，为每个旋钮识别相关专家并分配权重。各专家的权重非负，且对同一旋钮的权重之和为一。专家结合参数文档、初始观测、硬件和负载信息，以1–100分评估旋钮重要性，并推荐取值范围。系统通过加权平均汇总评分，得到旋钮排名。
 
-### Sub-Tuning Spaces
+在满足参数依赖、资源约束与领域覆盖要求的前提下，系统选择排名前20的旋钮，构成初始活动集合 $A_0$。专家建议同时确定整体参考范围 $\mathcal R_0^{\mathrm{ref}}$。未被选中的旋钮仍保留在 $K$ 中，以便在后续宏观修订时重新考虑。
 
-The effectiveness of a knob depends on its interaction with other knobs, making a single high-dimensional search space difficult to revise using limited execution feedback. To localize exploration and subsequent revisions, HierTune organizes active knobs into sparse groups that can be adjusted jointly, forming sub-tuning spaces
+### 子调优空间
+
+旋钮的效果依赖于其与其他旋钮的交互，因此有限执行反馈难以支撑对单个高维搜索空间的直接修订。为将探索与后续修订落实到局部，HierTune将活动旋钮组织为可联合调整的稀疏组合，形成子调优空间：
 
 $$
     h=(C_h,R_{h,t}),
@@ -32,18 +29,17 @@ $$
     
 $$
 
-where $t$ is the current tuning iteration, $A_t$ is the active knob set, $C_h$ is the group of jointly adjusted knobs, and $R_{h,t}$ is the recommended region maintained independently for this combination. By default, each expert maintains at most two regular sub-tuning spaces, each containing at most four knobs. Experts propose combinations and regions based on the overall reference ranges, current configuration, and execution history.
+其中，$t$ 为当前调优轮次，$A_t$ 为活动旋钮集合，$C_h$ 为联合调整的旋钮组，$R_{h,t}$ 为该组合独立维护的推荐区域。默认情况下，每个专家至多维护两个常规子调优空间，每个空间至多包含四个旋钮。专家依据整体参考范围、当前配置与执行历史，提出组合及推荐区域。
 
-Independent regions are central to two-level revision. The same knob may have different effective values in different combinations. Subspaces that share a knob therefore maintain separate local ranges for it. Micro-level revision changes only the corresponding subspace without overwriting other combinations or the overall reference ranges. This allows local priors to evolve independently while retaining shared execution feedback for performance modeling.
+独立维护区域是双层修订的关键。同一旋钮在不同组合中可能具有不同的有效取值，因此共享旋钮的子空间仍分别维护其局部范围。微观修订仅改变对应子空间，不覆盖其他组合的区域或整体参考范围。这样，局部先验能够独立演化，同时共享执行反馈以建立性能模型。
 
-Candidates are built upon the current best configuration $a_t$. Only knobs within the group are modified, and necessary activation dependencies are explicitly included in the group. Numerical knobs designated for logarithmic scaling are log-normalized; other numerical knobs are linearly normalized. Candidates are sampled within the recommended range using a truncated normal distribution centered at the recommended value, with a $10\%$ probability of global exploration. Integer values are rounded to their legal granularity. Enumeration and Boolean parameters are mainly sampled from recommended options, while retaining a chance to explore other legal options. Sampled configurations and explicit joint patches from experts form the candidates, which undergo validity checks, deduplication, and filtering of previously evaluated configurations.
-These independently maintained subspaces provide the units for the local revisions described next.
+候选配置以当前最佳配置 $a_t$ 为基础，仅修改组内旋钮，必要的激活依赖也显式纳入该组。指定采用对数尺度的数值旋钮进行对数归一化，其余数值旋钮进行线性归一化。在推荐范围内，系统使用以推荐值为中心的截断正态分布采样，并保留 $10\%$ 的全域探索概率。整数取值按照合法粒度取整；枚举与布尔参数主要从推荐选项中采样，同时保留探索其他合法选项的机会。区域采样配置与专家显式提出的联合配置补丁共同组成候选，并经过合法性检查、去重及已评测配置过滤。这些独立维护的子空间构成后续局部修订的基本单位。
 
-### Micro-Level Spatial Revision
+### 微观空间修订
 
-Execution feedback from a specific knob combination does not directly represent the improvement potential of these knobs in other combinations. HierTune therefore revises recommended regions and knob combinations within individual sub-tuning spaces while keeping the global active set and reference ranges unchanged. A shared Gaussian Process (GP) models the relationship between configurations and performance utility using the execution history $\mathcal D_t=\{(x_s,y_s)\}_{s=1}^{t}$, where $y_s$ is the observed utility of configuration $x_s$.
+特定旋钮组合的执行反馈不能直接代表这些旋钮在其他组合中的改善潜力。因此，HierTune在各个子调优空间内部修订推荐区域与旋钮组合，同时保持全局活动集合与参考范围不变。共享GP基于执行历史 $\mathcal D_t=\{(x_s,y_s)\}_{s=1}^{t}$，建模配置与性能效用之间的关系，其中 $y_s$ 为配置 $x_s$ 的观测效用。
 
-The GP provides a joint posterior distribution for candidate configurations and the reference configuration. Each draw produces a set of possible utility values while preserving correlations between configurations. Let $F$ denote one draw, with $F(x)$ representing the utility of configuration $x$ in that draw. For a candidate set $B$ held fixed during comparison, we define
+GP为候选配置与参考配置提供联合后验分布。每次抽样产生一组可能的效用值，并保留配置之间的相关性。令 $F$ 表示一次联合抽样，$F(x)$ 表示该次抽样中配置 $x$ 的效用。对于比较期间保持固定的候选集合 $B$，定义：
 
 $$
     Z_t(B;F)=
@@ -53,13 +49,13 @@ $$
     
 $$
 
-Here, $a_t$ is the current best configuration, $[v]_+=\max(v,0)$, and $\delta$ is the minimum improvement threshold. This estimate measures whether the candidate set offers improvement over the reference configuration and the expected magnitude of that improvement. We use $\delta=0.01$ and 256 joint posterior draws by default. These draws involve only model computation and require no additional database executions. Different proposals use the same reference configuration and candidate count.
+其中，$a_t$ 为当前最佳配置，$[v]_+=\max(v,0)$，$\delta$ 为最小改善阈值。该估计衡量候选集合相对于参考配置是否具有改善机会，以及预期改善的幅度。默认使用 $\delta=0.01$ 和256次联合后验抽样。这些抽样仅涉及模型计算，不增加数据库执行。不同提议使用相同的参考配置与候选数量。
 
-To locate promising values, the system generates valid probe configurations inside and outside the recommended region, forming $\mathcal P_h$. Internal probes cover the current region, while external probes combine boundary expansion with sampling over the wider legal domain. Knobs outside the group remain fixed at $a_t$. Each posterior draw identifies the best probe configuration and adds its improvement beyond the threshold to the corresponding location. The accumulated values are normalized into weights that reflect both winning frequency and improvement magnitude. If the total improvement is zero, the original region is retained.
+为定位有希望的取值，系统在推荐区域内外生成合法探测配置，构成 $\mathcal P_h$。区域内探测覆盖当前推荐区域；区域外探测结合边界扩展与更广合法值域上的采样。组外旋钮固定为 $a_t$ 中的取值。每次后验抽样识别最佳探测配置，将其超过改善阈值的增益累积到对应位置，再将累积结果归一化为权重，同时反映获胜频率与改善幅度。若总改善为零，则保留原区域。
 
-The system selects the valid probe configuration with the smallest total weighted distance to the improvement locations as the new center, preserving its joint knob values. For numerical knobs, distances from improvement locations to the new center are normalized by the original half-widths, taking the maximum across dimensions. Their weighted 80th percentile determines the half-width scaling factor, restricted to $[0.5,2]$. Concentrated improvement locations refine the region, dispersed locations expand coverage, and center changes shift the search location. Mixed-type distances account for numerical differences and categorical mismatches. For categorical knobs, experts propose new legal preference sets based on the improvement locations.
+系统从合法探测配置中选择到各改善位置的加权距离之和最小者作为新中心，保留其联合旋钮取值。对于数值旋钮，将改善位置到新中心的距离按原半宽归一化，并取各维度的最大值；这些距离的加权80%分位数决定半宽缩放因子，缩放因子限制在 $[0.5,2]$ 内。改善位置集中时细化区域，分散时扩大覆盖，而中心变化用于迁移搜索位置。混合类型距离同时考虑数值差异与类别不匹配。对于类别旋钮，专家根据改善位置提出新的合法偏好选项集合。
 
-To determine whether the proposed region should replace the original one, the system generates equal numbers of candidates, forming $B_h'$ and $B_h$, and computes
+为判断新区域是否应替代原区域，系统分别生成相同数量的候选，构成 $B_h'$ 与 $B_h$，计算：
 
 $$
     Q_t(B_h',B_h)=
@@ -70,17 +66,17 @@ $$
     
 $$
 
-Whereas the opportunity estimate measures improvement over the reference configuration, this comparison requires posterior support for an advantage greater than $\delta$ over the original region. The revision is accepted when $Q_t(B_h',B_h)>\rho$, with $\rho=0.7$ by default. The accepted region applies only to the current knob combination and does not change the ranges of other subspaces.
+机会估计衡量相对于参考配置的改善，而上述比较要求后验支持新区域相对于原区域具有超过 $\delta$ 的优势。当 $Q_t(B_h',B_h)>\rho$ 时接受修订，默认 $\rho=0.7$。被接受的区域仅适用于当前旋钮组合，不改变其他子空间的取值范围。
 
-When a sub-tuning space produces no improvement over three consecutive actual evaluations, the system requests a review from the relevant expert. The expert receives the current combination, recommended region, full execution history, and information about improvement opportunities and candidate coverage inside and outside the region. It then considers whether to continue exploration, propose a range revision, or suggest alternative combinations. If a combination update is needed, the expert proposes several new knob groups from the active set. The system generates equal numbers of candidates for the proposed and existing groups maintained by that expert and evaluates their improvement opportunities using $V_t$. The highest-scoring groups, up to two, and their recommended regions become the expert's maintained sub-tuning spaces. Thus, each expert maintains at most two knob groups, and new proposals compete with existing groups rather than replacing them directly.
+当一个子调优空间连续三次实际评测均未产生改善时，系统请求相关专家审查。专家接收当前组合、推荐区域、完整执行历史，以及区域内外的改善机会和候选覆盖信息，据此考虑继续探索、修订范围或提出替代组合。若需要更新组合，专家从活动集合中提出若干新旋钮组。系统为该专家的新组与已有组生成等量候选，通过 $V_t$ 评估改善机会，并保留得分最高的至多两个组及其推荐区域。因此，每位专家至多维护两个旋钮组，新提议需与已有组竞争，而非直接替换已有组。
 
-### Macro-Level Revision
+### 宏观修订
 
-Local improvements reflect performance under specific combinations and cannot directly justify changes to the overall prior. HierTune therefore jointly reviews the active set and overall reference ranges every $H=12$ adaptive configuration evaluations. The review includes only currently active knobs whose values have been changed in at least three actual configuration evaluations after the first ten initialization evaluations. This avoids removing knobs solely because they lack observed contributions or sufficient exploration.
+局部改善反映特定组合下的性能，不能直接作为改变整体先验的依据。因此，HierTune每完成 $H=12$ 次自适应配置评测，联合审查活动集合与整体参考范围。审查仅包含当前活动旋钮中，在前十次初始化评测之后、至少三次真实配置评测中发生过取值变化的旋钮，避免仅因未观测到贡献或探索不足而移除旋钮。
 
-Let $S=(A,\mathcal R^{\mathrm{ref}},\mathcal H)$ denote the search state, consisting of the active knob set, overall reference ranges, and sub-tuning space set. Following fixed rules, the system generates equal numbers of candidates for each expert to form a state comparison set $B(S)$. It reuses the micro-level opportunity estimate and defines $\Phi_t(S)=V_t(B(S))$.
+令 $S=(A,\mathcal R^{\mathrm{ref}},\mathcal H)$ 表示搜索状态，分别包含活动旋钮集合、整体参考范围与子调优空间集合。系统按固定规则为每个专家生成等量候选，构成状态比较集 $B(S)$，复用微观层面的机会估计，定义 $\Phi_t(S)=V_t(B(S))$。
 
-After removing a knob or a necessary dependency group $U$, its values are fixed at those in $a_t$, and the remaining state $S^{-U}$ is rebuilt using the same GP. The removal loss is $\mathcal L_t(U)=\Phi_t(S)-\Phi_t(S^{-U})$. A smaller loss indicates that the current search depends less on this object and that its estimated marginal value is lower under the current active set and reference configuration. Removal must satisfy both conditions:
+移除旋钮或必要的依赖组 $U$ 后，将其取值固定为 $a_t$ 中的值，并使用同一GP重建剩余状态 $S^{-U}$。移除损失为 $\mathcal L_t(U)=\Phi_t(S)-\Phi_t(S^{-U})$。损失越小，表示当前搜索对该对象的依赖越弱，其在当前活动集合与参考配置下的估计边际价值越低。移除需同时满足以下两个条件：
 
 $$
     \mathcal L_t(U)\leq\gamma_{\mathrm{rm}},
@@ -93,19 +89,19 @@ $$
     
 $$
 
-Here, $\gamma_{\mathrm{rm}}=\delta$ is the acceptable opportunity loss, and $\rho=0.7$. The two conditions constrain the expected removal loss and the posterior probability that the loss remains within tolerance. The original and removal states use equal numbers of candidates. Common random numbers are used for shared coordinates where possible to reduce sampling differences.
+其中，$\gamma_{\mathrm{rm}}=\delta$ 为可接受的机会损失，$\rho=0.7$。两个条件分别约束期望移除损失，以及损失保持在容忍范围内的后验概率。原状态与移除后状态使用等量候选，并尽可能对共享坐标使用共同随机数，以减少采样差异。
 
-The system selects removal objects sequentially by removal loss and re-evaluates the remaining choices after each removal. At most five knobs are replaced per period. Each expert then re-ranks inactive knobs using the latest execution feedback and recommends at most six candidate knobs. The initialization weighting procedure determines their entry priority. Experts also update the overall reference ranges and new or affected subspaces, while other combinations retain their local regions. Changes to the active set do not alter the GP's full configuration encoding, so historical values of removed knobs remain available for performance modeling.
+系统按移除损失依次选择移除对象，每次移除后重新评估其余选择，每个周期至多替换五个旋钮。随后，各专家结合最新执行反馈重新排序非活动旋钮，每位专家至多推荐六个候选旋钮，再通过初始化阶段的加权机制确定引入优先级。专家同时更新整体参考范围及新增或受影响的子空间，其他组合保留原局部区域。活动集合变化不改变GP的完整配置编码，因此已移除旋钮的历史取值仍可用于性能建模。
 
-### Candidate Allocation and Closed-Loop Execution
+### 候选分配与闭环执行
 
-As micro- and macro-level revisions change knob combinations and recommended regions, the improvement opportunities and sampling needs of individual sub-tuning spaces also evolve. HierTune therefore progressively allocates candidates according to improvement opportunities and coverage requirements.
+微观与宏观修订改变旋钮组合及推荐区域，也使各子调优空间的改善机会与采样需求随之变化。因此，HierTune依据改善机会与覆盖需求逐步分配候选。
 
-Each sub-tuning space first generates four initial candidates. To account for database execution noise, the shared GP computes noisy expected improvement (NEI). In each joint posterior draw, the candidate's utility is compared with the highest utility among previously evaluated configurations. Positive differences are retained and then averaged across draws. Unlike ordinary expected improvement with a fixed best-value baseline, this calculation also accounts for uncertainty in the performance of previously evaluated configurations.
+每个子调优空间首先生成四个初始候选。为考虑数据库执行噪声，共享GP计算噪声期望改进（NEI）：在每次联合后验抽样中，将候选效用与已评测配置中的最高效用比较，保留正差值，再对各次抽样取平均。与使用固定最佳值作为基准的普通期望改进不同，该计算同时考虑历史配置性能的不确定性。
 
-Following the regional averaging idea of REI, the system uses the candidates' mean NEI, $P_{h,t}$, to estimate the improvement opportunity of the current candidate distribution. Unlike $V_t(B)$, which measures the best improvement of a candidate set for structural comparison, $P_{h,t}$ summarizes average pointwise improvement. The system uses the relative score $\widetilde P_{h,t}=P_{h,t}/\max_{g\in\mathcal H_t}P_{g,t}$, setting it to zero when all scores are zero. This normalization preserves relative differences between spaces and prevents changes in the absolute NEI scale from altering the balance between improvement and coverage.
+参考REI的区域平均思想，系统使用候选NEI的均值 $P_{h,t}$，估计当前候选分布的改善机会。$V_t(B)$ 衡量候选集合的最佳改善机会，用于结构比较；$P_{h,t}$ 则汇总逐点改善的平均水平。系统使用相对得分 $\widetilde P_{h,t}=P_{h,t}/\max_{g\in\mathcal H_t}P_{g,t}$，当所有得分均为零时将其设为零。这一归一化保留空间之间的相对差异，避免NEI绝对尺度的变化改变改善与覆盖之间的平衡。
 
-A finite candidate set may still miss promising locations. The system therefore also considers region scale, dimensionality, and candidate count. Let $n_{h,t}\geq4$ be the current candidate count, $d_h=|C_h|$ the knob count, and $L_{h,t}$ the maximum distance between legal configurations in the recommended region. This distance is measured in GP encoding coordinates scaled by their length scales. Numerical and ordered categorical values use normalized coordinates, while Boolean and unordered categorical values use one-hot coordinates. Knobs outside the group remain fixed at $a_t$. The next candidate is assigned to
+有限候选可能遗漏有希望的位置，因此系统还考虑区域尺度、维度与候选数量。令 $n_{h,t}\geq4$ 为当前候选数量，$d_h=|C_h|$ 为旋钮数量，$L_{h,t}$ 为推荐区域内合法配置之间的最大距离。距离在按GP长度尺度缩放后的编码坐标中度量；数值与有序类别取值使用归一化坐标，布尔与无序类别取值使用独热编码，组外旋钮固定为 $a_t$ 中的取值。下一个候选分配给：
 
 $$
     \kappa_{h,t}(n)=L_{h,t}n^{-1/d_h},
@@ -118,26 +114,26 @@ $$
     
 $$
 
-Here, $\mathcal H_t$ is the current set of sub-tuning spaces. We use $\lambda=0.2$ by default to retain a base coverage weight when predicted improvement is zero. The quantity $\kappa_{h,t}(n)$ is a geometric approximation based on region scale, knob count, and candidate count, rather than an actual coverage error. The rule prioritizes spaces with higher relative improvement opportunities where an additional candidate can still substantially reduce the remaining coverage scale. Scores, normalized values, and candidate counts are updated after each generation step. With fixed scores and regions, the priority of further investment decreases as more candidates are generated.
+其中，$\mathcal H_t$ 为当前子调优空间集合。默认取 $\lambda=0.2$，在预测改善为零时仍保留基础覆盖权重。$\kappa_{h,t}(n)$ 是由区域尺度、旋钮数量和候选数量构成的几何近似，而非实际覆盖误差。该规则优先考虑相对改善机会较高、且增加一个候选仍能显著降低剩余覆盖尺度的空间。每次生成候选后更新得分、归一化值与候选数量；当得分与区域固定时，随着候选增多，继续投入的优先级逐步降低。
 
-After candidate generation, all valid, unique, and previously unevaluated configurations enter a unified pool, from which qLogNEI selects one configuration for execution. The observation updates the shared GP, current best configuration, and subspace exploration state, providing feedback for subsequent local and global revisions. The revised subspaces then guide candidate generation in the next round. This mechanism combines relative improvement opportunities with coverage requirements and allows candidates from multiple subspaces to compete for execution.
+候选生成后，所有合法、唯一且此前未评测的配置进入统一候选池，由qLogNEI选择一个配置执行。观测结果更新共享GP、当前最佳配置与子空间探索状态，为后续局部与全局修订提供反馈。修订后的子空间引导下一轮候选生成。该机制结合相对改善机会与覆盖需求，并允许多个子空间的候选共同竞争真实执行机会。
 
 ### 超参数
 
-| Parameter | Default |
+| 参数 | 默认值 |
 |---|---|
-| Domain experts / initial active knobs | 4 / 20 |
-| Subspaces per expert / knobs per subspace | At most 2 / at most 4 |
-| Global sampling probability | 0.1 |
-| Minimum improvement $\delta$ / posterior draws | 0.01 / 256 |
-| Width quantile / scale factor bounds | 0.8 / [0.5, 2] |
-| Acceptance probability $\rho$ | 0.7 |
-| Local stagnation review | 3 consecutive actual local evaluations |
-| Macro review interval | 12 adaptive evaluations |
-| Macro eligibility / replacement cap | 3 actual changes / at most 5 knobs |
-| Inactive nominations per expert | At most 6 |
-| Acceptable removal loss $\gamma_{\mathrm{rm}}$ | $\delta=0.01$ |
-| Initial candidates per subspace / allocation weight $\lambda$ | 4 / 0.2 |
+| 领域专家数 / 初始活动旋钮数 | 4 / 20 |
+| 每位专家的子空间数 / 每个子空间的旋钮数 | 至多2个 / 至多4个 |
+| 全域采样概率 | 0.1 |
+| 最小改善阈值 $\delta$ / 后验抽样次数 | 0.01 / 256 |
+| 宽度更新分位数 / 缩放因子范围 | 0.8 / [0.5, 2] |
+| 修订接受概率阈值 $\rho$ | 0.7 |
+| 局部停滞审查条件 | 连续3次实际局部评测未改善 |
+| 宏观审查周期 | 12次自适应评测 |
+| 宏观审查资格 / 每周期替换上限 | 至少3次实际取值变化 / 至多5个旋钮 |
+| 每位专家推荐的非活动旋钮数 | 至多6个 |
+| 可接受移除损失 $\gamma_{\mathrm{rm}}$ | $\delta=0.01$ |
+| 每个子空间的初始候选数 / 分配权重 $\lambda$ | 4 / 0.2 |
 
 ## 2. HierTune_v2
 
