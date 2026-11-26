@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cognitune"
+name = "hiertune"
 version = "0.1.0"
-description = "Entropy-guided multi-agent database knob tuning with a GP performance surrogate"
+description = "HierTune: Two-Level Search-Space Revision for LLM-Assisted Database Tuning"
 requires-python = ">=3.10,<3.13"
 dependencies = [
   "botorch==0.13.0",
@@ -22,7 +22,7 @@ dependencies = [
 test = ["pytest>=8.3,<9"]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["hiertune_v1/src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

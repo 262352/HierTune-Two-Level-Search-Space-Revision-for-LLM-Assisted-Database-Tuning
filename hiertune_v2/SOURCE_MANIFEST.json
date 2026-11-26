@@ -51,5 +51,5 @@
   "archived_optimizer_sha256": "b42928b77a5fb2ca28dd1b1aec561dc8393524ffbf65101ab97e33468ea703be",
   "exact_historical_success_source_match": false,
   "note": "Recoverable committed per-round stable-policy source; original successful-run manifest differs, so not asserted byte-identical.",
-  "publication_note": "Only dependencies of the per-round method are retained; optimizer package initializer omits unused baseline exports."
+  "publication_note": "Only dependencies of the per-round method are retained; files now live under hiertune_v2/src and hiertune_v2/configs. Optimizer package initializer omits unused baseline exports."
 }

@@ -1,8 +1,10 @@
-# HierTune
+# HierTune: Two-Level Search-Space Revision for LLM-Assisted Database Tuning
 
 [中文](README.zh-CN.md) · [English](README.md)
 
-## 1. HierTune：论文方法原文
+## 1. HierTune_v1：论文方法原文
+
+代码目录：`hiertune_v1/src/cognitune/`。V2的代码与运行入口独立保存在 `hiertune_v2/`。
 
 ### Overview
 
@@ -154,7 +156,7 @@ BenchBase源码置于 `.runtime/benchbase`，使用提交 `33c00473807ebd49304d1
 ```bash
 python3.11 -m venv .venv
 .venv/bin/pip install -e .
-.venv/bin/python -u legacy_jointune_per_round/run_ycsb.py --budget 50 --output artifacts/hiertune_v2_ycsb50
+.venv/bin/python -u hiertune_v2/run_ycsb.py --budget 50 --output artifacts/hiertune_v2_ycsb50
 ```
 
 发布数据仅包括指定的四张PNG、行为分析对应的YCSB轨迹及 `gp20_small_candidate_grid_v1`。行为图的展示调整记录保留在YCSB目录的 `figure_display_edits.json`，不应将展示配额当作未经修改的执行日志。

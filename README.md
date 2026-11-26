@@ -1,8 +1,10 @@
-# HierTune
+# HierTune: Two-Level Search-Space Revision for LLM-Assisted Database Tuning
 
 [中文](README.zh-CN.md) · [English](README.md)
 
-## 1. HierTune: paper method
+## 1. HierTune_v1: paper method
+
+V1 code: `hiertune_v1/src/cognitune/`. V2 code and its runner are isolated in `hiertune_v2/`.
 
 ### Overview
 
@@ -154,7 +156,7 @@ Only the existing per-round expert entry point is provided below. It calls exper
 ```bash
 python3.11 -m venv .venv
 .venv/bin/pip install -e .
-.venv/bin/python -u legacy_jointune_per_round/run_ycsb.py --budget 50 --output artifacts/hiertune_v2_ycsb50
+.venv/bin/python -u hiertune_v2/run_ycsb.py --budget 50 --output artifacts/hiertune_v2_ycsb50
 ```
 
 Published data are limited to the four requested PNGs, the YCSB behavior trace and `gp20_small_candidate_grid_v1`. Display edits for the behavior figure are preserved as `figure_display_edits.json` alongside the YCSB data; edited display quotas are not raw execution logs.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Run the archived per-round JointTune policy, or --smoke without DB/API.
+"""Run the HierTune_v2 per-round expert reference policy, or --smoke without DB/API.
 
-Algorithm imports resolve exclusively to ./snapshot/src. Real DB infrastructure
+Algorithm imports resolve exclusively to ./src. Real DB infrastructure
 is deliberately reused from the parent repository, not duplicated or rewritten.
 """
 from __future__ import annotations
@@ -18,7 +18,7 @@ import time
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parent
-sys.path[:0]=[str(HERE/'snapshot/src'),str(ROOT/'scripts')]
+sys.path[:0]=[str(HERE/'src'),str(ROOT/'scripts')]
 
 
 def smoke():
@@ -31,7 +31,7 @@ def smoke():
     from cognitune.optimizers.cognitune_v3 import run_cognitune_v3
     import cognitune.optimizers.cognitune_v3 as optimizer
     torch.set_num_threads(2)
-    space=load_search_space(HERE/'snapshot/configs/knobs/synthetic.yaml')
+    space=load_search_space(HERE/'configs/knobs/synthetic.yaml')
     calls=[];mock=StructuredMockProposer()
     def proposer(expert,context):
         calls.append({'expert':expert,'trial':context['trial'],'phase':context.get('phase','candidate_proposal')})
@@ -42,7 +42,7 @@ def smoke():
             search_policy='stable',active_target=4,audit_size=2,posterior_samples=32,fantasies=4)
     for trial in (3,4):
         assert len([c for c in calls if c['trial']==trial and c['phase']=='candidate_proposal'])==4
-    assert Path(optimizer.__file__).resolve().is_relative_to(HERE/'snapshot')
+    assert Path(optimizer.__file__).resolve().is_relative_to(HERE)
     print(json.dumps({'status':'PASS','algorithm_file':optimizer.__file__,'trials':result['trials'],
         'calls':calls,'database_calls':0,'provider_calls':0},indent=2))
 
@@ -63,7 +63,7 @@ def run(args):
     args.output.mkdir(parents=True,exist_ok=True)
     with shared.lock():
         shared.disk_check();random.seed(0);np.random.seed(0);torch.manual_seed(0);torch.set_num_threads(2)
-        space=load_search_space(HERE/'snapshot/configs/knobs/postgresql_60_diagnostic.yaml')
+        space=load_search_space(HERE/'configs/knobs/postgresql_60_diagnostic.yaml')
         source=ROOT/'artifacts/ours_ycsb_ch_100_dev_v1/ycsb/preparation.json'
         initial=json.loads(source.read_text())['shared_initial']
         design=[initial[str(i)]['config'] for i in range(10)]
@@ -87,7 +87,7 @@ def run(args):
         if any(r['status']!='SUCCESS' for r in starts.values()):raise RuntimeError('Initial preflight failed')
         manifest=json.loads((HERE/'SOURCE_MANIFEST.json').read_text())
         for rel,digest in manifest['source_files'].items():
-            if hashlib.sha256((HERE/'snapshot'/rel).read_bytes()).hexdigest()!=digest:
+            if hashlib.sha256((HERE/rel).read_bytes()).hexdigest()!=digest:
                 raise RuntimeError('Archived source changed: '+rel)
         context={'dbms':'PostgreSQL 14.9','workload':'ycsb',**SPECS['ycsb'],
                  'warmup_seconds':15,'measurement_seconds':60,'normalization_default_tps':base,
@@ -120,7 +120,7 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--smoke',action='store_true')
     parser.add_argument('--budget',type=int,default=50)
-    parser.add_argument('--output',type=Path,default=ROOT/'artifacts/legacy_jointune_per_round_ycsb50')
+    parser.add_argument('--output',type=Path,default=ROOT/'artifacts/hiertune_v2_ycsb50')
     args=parser.parse_args()
     if args.smoke:smoke()
     else:run(args)
